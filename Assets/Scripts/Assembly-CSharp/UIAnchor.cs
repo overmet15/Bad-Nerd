@@ -35,7 +35,7 @@ public class UIAnchor : MonoBehaviour
 
 	private void OnEnable()
 	{
-		mIsWindows = Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsWebPlayer || Application.platform == RuntimePlatform.WindowsEditor;
+		mIsWindows = Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WebGLPlayer || Application.platform == RuntimePlatform.WindowsEditor;
 		if (uiCamera == null)
 		{
 			uiCamera = NGUITools.FindCameraForLayer(base.gameObject.layer);

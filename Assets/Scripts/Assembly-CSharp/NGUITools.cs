@@ -36,7 +36,7 @@ public static class NGUITools
 	{
 		get
 		{
-			return Application.platform != RuntimePlatform.WindowsWebPlayer && Application.platform != RuntimePlatform.OSXWebPlayer;
+			return Application.platform != RuntimePlatform.WebGLPlayer;
 		}
 	}
 
