@@ -218,11 +218,11 @@ namespace Electrotank.Electroserver5.Core
 
 		protected virtual void OnUploadDataCompleted(UnityUploadDataCompletedEventArgs e)
 		{
-			EventHandler<UnityUploadDataCompletedEventArgs> uploadDataCompleted = this.UploadDataCompleted;
+			/*EventHandler<UnityUploadDataCompletedEventArgs> uploadDataCompleted = this.UploadDataCompleted;
 			if (uploadDataCompleted != null)
 			{
 				uploadDataCompleted(this, e);
-			}
+			}*/
 		}
 
 		public void CancelAsync()

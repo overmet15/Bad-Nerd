@@ -13,8 +13,8 @@ namespace Prime31
 			List<T> list = new List<T>();
 			foreach (Dictionary<string, object> item in self)
 			{
-				list.Add(item.toClass<T>());
-			}
+                list.Add(toClass<T>(item));
+            }
 			return list;
 		}
 
@@ -78,14 +78,14 @@ namespace Prime31
 						ArrayList arrayList = new ArrayList();
 						foreach (object item in enumerable)
 						{
-							arrayList.Add(item.toDictionary());
-						}
+                            arrayList.Add(toDictionary(item));
+                        }
 						dictionary[p31DeserializeableFieldAttribute.key] = arrayList;
 					}
 					else if (p31DeserializeableFieldAttribute.type != null)
 					{
-						dictionary[p31DeserializeableFieldAttribute.key] = fieldInfo.GetValue(self).toDictionary();
-					}
+						dictionary[p31DeserializeableFieldAttribute.key] = toDictionary(fieldInfo.GetValue(self));
+                    }
 					else
 					{
 						dictionary[p31DeserializeableFieldAttribute.key] = fieldInfo.GetValue(self);
@@ -112,14 +112,14 @@ namespace Prime31
 						ArrayList arrayList = new ArrayList();
 						foreach (object item in enumerable)
 						{
-							arrayList.Add(item.toHashtable());
+							arrayList.Add(toHashtable(item));
 						}
 						hashtable[p31DeserializeableFieldAttribute.key] = arrayList;
 					}
 					else if (p31DeserializeableFieldAttribute.type != null)
 					{
-						hashtable[p31DeserializeableFieldAttribute.key] = fieldInfo.GetValue(self).toHashtable();
-					}
+						hashtable[p31DeserializeableFieldAttribute.key] = toHashtable(fieldInfo.GetValue(self));
+                    }
 					else
 					{
 						hashtable[p31DeserializeableFieldAttribute.key] = fieldInfo.GetValue(self);
