@@ -3,7 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - limb
+  - playerLimb
+  - enemyLimb
+  - weapon
+  - tool
+  - enemy
+  - armor
+  - Portal
+  - spawnSpot
+  - spawnManager
+  - randomWaypoint
+  - questGiver
+  - exclaimationMark
   layers:
   - Default
   - TransparentFX
@@ -13,17 +26,17 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - playerLimb
+  - playerBody
+  - enemyLimb
+  - enemyBody
+  - ui
+  - uiItem
+  - hidden
+  - blockWall
+  - armor
+  - map
+  - mapButton
   - 
   - 
   - 
