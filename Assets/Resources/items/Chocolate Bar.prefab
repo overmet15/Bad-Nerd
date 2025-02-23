@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1362963382025785}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0
+--- !u!1 &1362963382025785
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 4777945596720726}
+  - 33: {fileID: 33802626329972178}
+  - 23: {fileID: 23971220340593587}
+  - 114: {fileID: 114962429615596053}
+  - 54: {fileID: 54431218277575385}
+  - 65: {fileID: 65081081524092557}
+  m_Layer: 0
+  m_Name: Chocolate Bar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &4777945596720726
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362963382025785}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.6127121, z: -3.8076746}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!33 &33802626329972178
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362963382025785}
+  m_Mesh: {fileID: 4300000, guid: 43ae6825db2f7f34bbad94ef82afbe25, type: 2}
+--- !u!23 &23971220340593587
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362963382025785}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 64755c408ac670740848b4105f84440e, type: 2}
+  m_SubsetIndices: []
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!114 &114962429615596053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362963382025785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9831e85041eaf92600d38ad2e775eec, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  price: 25
+  description: When you are in bad health. \nGo for a chocolate bar!
+  spin: 0
+  spinSpeed: 1
+  carryingWeight: 1
+  pickupSound: {fileID: 8300000, guid: 23074034d39a0384bada60ab4a547b6b, type: 3}
+  useSound: {fileID: 8300000, guid: 8706a43fc3595bf4aaae3a10cee8e944, type: 3}
+  detatchSound: {fileID: 8300000, guid: b79d1e41521589640bacf469a1db63e5, type: 3}
+  hOffset: 0
+  vOffset: 0
+  storeOrder: 0
+  isForPlayerOnly: 0
+  isInMiscSection: 0
+  isInMiscSectionInInventory: 0
+  owner: {fileID: 0}
+  dontStripDescriptionLineBreaks: 0
+  count: 1
+  healthValue: 35
+--- !u!54 &54431218277575385
+Rigidbody:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362963382025785}
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &65081081524092557
+BoxCollider:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362963382025785}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Size: {x: 1.06469, y: 2.9196029, z: 0.427878}
+  m_Center: {x: -0.006480992, y: -0.22723848, z: 0}

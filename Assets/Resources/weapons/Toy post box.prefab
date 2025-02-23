@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1786262754163293}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0
+--- !u!1 &1786262754163293
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 4585892980552038}
+  - 33: {fileID: 33872002424932796}
+  - 23: {fileID: 23079668609469083}
+  - 65: {fileID: 65385900897707416}
+  - 54: {fileID: 54974551373946980}
+  - 114: {fileID: 114272668008022812}
+  m_Layer: 0
+  m_Name: Toy post box
+  m_TagString: weapon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &4585892980552038
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786262754163293}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.945317, y: 7.130564, z: -29.394258}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!33 &33872002424932796
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786262754163293}
+  m_Mesh: {fileID: 4300000, guid: 0d0d2a94bf9888149ad7796d47bccbb7, type: 2}
+--- !u!23 &23079668609469083
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786262754163293}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 326427490820515469af91cb2046159b, type: 2}
+  m_SubsetIndices: []
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!65 &65385900897707416
+BoxCollider:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786262754163293}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Size: {x: 0.92304003, y: 1.8420889, z: 0.78099597}
+  m_Center: {x: -0.107897, y: 0.9222255, z: 0.119844005}
+--- !u!54 &54974551373946980
+Rigidbody:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786262754163293}
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &114272668008022812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786262754163293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b246e910d667390800929b9dc5edc4a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  price: 20
+  description: A toy mail box.  Too small\nto hit with but should\nbe good for throwing.
+  spin: 0
+  spinSpeed: 1
+  carryingWeight: 0.5
+  pickupSound: {fileID: 8300000, guid: 23074034d39a0384bada60ab4a547b6b, type: 3}
+  useSound: {fileID: 8300000, guid: 1b0dbad3eb39c674db9167b83bbc1b01, type: 3}
+  detatchSound: {fileID: 8300000, guid: b79d1e41521589640bacf469a1db63e5, type: 3}
+  hOffset: 0
+  vOffset: 0
+  storeOrder: 0
+  isForPlayerOnly: 0
+  isInMiscSection: 0
+  isInMiscSectionInInventory: 0
+  owner: {fileID: 0}
+  dontStripDescriptionLineBreaks: 0
+  isFixable: 0
+  maxLife: 100
+  life: 0
+  damage: 1
+  isThrowable: 1
+  count: 25

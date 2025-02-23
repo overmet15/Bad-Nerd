@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1509318660959834}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0
+--- !u!1 &1509318660959834
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 4503107655523033}
+  - 33: {fileID: 33811638038332103}
+  - 23: {fileID: 23896157443567040}
+  - 114: {fileID: 114877916396649585}
+  - 54: {fileID: 54546988404211919}
+  - 65: {fileID: 65813609740994919}
+  m_Layer: 0
+  m_Name: Strep Throat Bomb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &4503107655523033
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1509318660959834}
+  m_LocalRotation: {x: 0, y: 0.13478836, z: 0, w: -0.99087447}
+  m_LocalPosition: {x: 289.8258, y: 1.964714, z: -28.19601}
+  m_LocalScale: {x: 0.9524073, y: 0.9524073, z: 0.9524073}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!33 &33811638038332103
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1509318660959834}
+  m_Mesh: {fileID: 4300000, guid: 04721214aee98d148af0d7fdd77e8db2, type: 2}
+--- !u!23 &23896157443567040
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1509318660959834}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: dea0fcb5a49039e44be42598afd9ba90, type: 2}
+  m_SubsetIndices: []
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!114 &114877916396649585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1509318660959834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8db2bc4697443d421515c4266990aed4, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  price: 299
+  description: Instead of loading the paintball grenade\nwith fart, this one is packed with slime\nthat came out of various sick kids.\nAnyone who breathes these toxic fumes\nis sure to get sick right away!
+  spin: 0
+  spinSpeed: 1
+  carryingWeight: 1
+  pickupSound: {fileID: 8300000, guid: 23074034d39a0384bada60ab4a547b6b, type: 3}
+  useSound: {fileID: 8300000, guid: b79d1e41521589640bacf469a1db63e5, type: 3}
+  detatchSound: {fileID: 8300000, guid: b79d1e41521589640bacf469a1db63e5, type: 3}
+  hOffset: 0
+  vOffset: 0
+  storeOrder: 0
+  isForPlayerOnly: 0
+  isInMiscSection: 0
+  isInMiscSectionInInventory: 0
+  owner: {fileID: 0}
+  dontStripDescriptionLineBreaks: 0
+  count: 1
+  particlesWhenExecuted:
+  - {fileID: 198480529413867692, guid: 2abd7c2021775074e8f78e9872e7e2ac, type: 2}
+  - {fileID: 198910498740937253, guid: 8e6e3b092ce69ea4d9560e6a6b1a7c11, type: 2}
+  range: 11
+  loops: 3
+  damage: 0.15
+  energyDrain: 0.15
+  explosionSound: {fileID: 8300000, guid: be433c1664bdad644a4f657a37bf6382, type: 3}
+--- !u!54 &54546988404211919
+Rigidbody:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1509318660959834}
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &65813609740994919
+BoxCollider:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1509318660959834}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Size: {x: 0.892259, y: 1.180665, z: 1.22261}
+  m_Center: {x: -0.0008764863, y: 0.2138355, z: 0.208085}

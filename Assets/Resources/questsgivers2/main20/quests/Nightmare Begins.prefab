@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1956837336343663}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0
+--- !u!1 &1956837336343663
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 4359525536197297}
+  - 114: {fileID: 114976101331114085}
+  m_Layer: 0
+  m_Name: Nightmare Begins
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4359525536197297
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1956837336343663}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114976101331114085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1956837336343663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd4a91b71ae7d8545bc83609264161a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  chainedQuest: {fileID: 0}
+  storyTexts:
+  - zom3_1
+  - zom3_2
+  - zom3_3
+  - zom3_4
+  beginQuestTexts: []
+  successTexts: []
+  inProgressText: []
+  confirmationMsg:
+  levelToGoTo: Gym2
+  levelToGoToWhenDone: Gym2
+  autoJumpToLocation: 0
+  gotoQuestDestinationFromInfirmary: 0
+  infoOnly: 1
+  delayBeforeCameraOn: 1
+  reward: {fileID: 0}
+  moneyReward: 0
+  shouldDoFB: 0
+  shouldDoKiip: 1
+  isDoNotPersistCompletion: 0
+  deletePlayerWhenDone: 0
+  episode: 1
+  considerCompleteIfDifferentEpisode: 0
+  nextQuestGiverLocation: HomeBase2
+  changeMusicToEpisode: 0
+  episodeMusic: 0
+  nextQuest: {fileID: 114349873684752946, guid: 3c2aa1839dbb8dd409f6e8b4f969cf9a, type: 2}
+  doNotSpawnCrowd: 1

@@ -1,0 +1,229 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1427853441380937}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0
+--- !u!1 &1427853441380937
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 4458946996465968}
+  - 114: {fileID: 114509948524956552}
+  m_Layer: 0
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4458946996465968
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1427853441380937}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4349156410849149}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114509948524956552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1427853441380937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbec0949f66ccf4180e9262ae796a230, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  chainedQuest: {fileID: 0}
+  storyTexts: []
+  beginQuestTexts:
+  - tut_23
+  - tut_24
+  successTexts:
+  - tut_25
+  - tut_26
+  - tut_27
+  inProgressText: []
+  confirmationMsg:
+  levelToGoTo: Gym
+  levelToGoToWhenDone: HomeBase
+  autoJumpToLocation: 1
+  gotoQuestDestinationFromInfirmary: 1
+  infoOnly: 0
+  delayBeforeCameraOn: 1
+  reward: {fileID: 0}
+  moneyReward: 30
+  shouldDoFB: 0
+  shouldDoKiip: 0
+  isDoNotPersistCompletion: 0
+  deletePlayerWhenDone: 0
+  episode: 0
+  considerCompleteIfDifferentEpisode: 0
+  nextQuestGiverLocation:
+  changeMusicToEpisode: 0
+  episodeMusic: 0
+  nextQuest: {fileID: 0}
+  doNotSpawnCrowd: 1
+--- !u!1 &1922473879920050
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 4349156410849149}
+  - 33: {fileID: 33049390416622132}
+  - 23: {fileID: 23034148739249999}
+  - 114: {fileID: 114003927783284323}
+  - 65: {fileID: 65367149474630428}
+  - 54: {fileID: 54659512227780912}
+  - 114: {fileID: 114335325145704128}
+  m_Layer: 0
+  m_Name: Ball
+  m_TagString: weapon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &4349156410849149
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1922473879920050}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 31.366789, y: 0.25790215, z: 22.601633}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4458946996465968}
+  m_RootOrder: 0
+--- !u!33 &33049390416622132
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1922473879920050}
+  m_Mesh: {fileID: 4300000, guid: 4d6f5bf99d5b7b64bb1047d0a1df0a3c, type: 2}
+--- !u!23 &23034148739249999
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1922473879920050}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: b1a6b946afb060f4191b01b4cff1b7c4, type: 2}
+  m_SubsetIndices: []
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!114 &114003927783284323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1922473879920050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4c9c4808d7a4ebfad56f9a8f0ea30b5, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  price: 65
+  description: This is the ball used to teach you about\ninventory.  Items you didn't buy are disposable.\nThey will break quickly and you\ncannot repair them.
+  spin: 0
+  spinSpeed: 1
+  carryingWeight: 0
+  pickupSound: {fileID: 8300000, guid: 23074034d39a0384bada60ab4a547b6b, type: 3}
+  useSound: {fileID: 8300000, guid: 1b0dbad3eb39c674db9167b83bbc1b01, type: 3}
+  detatchSound: {fileID: 8300000, guid: b79d1e41521589640bacf469a1db63e5, type: 3}
+  hOffset: 0
+  vOffset: 0
+  storeOrder: 0
+  isForPlayerOnly: 0
+  isInMiscSection: 0
+  isInMiscSectionInInventory: 0
+  owner: {fileID: 0}
+  dontStripDescriptionLineBreaks: 0
+  isFixable: 0
+  maxLife: 5
+  life: 0
+  damage: 1
+  isThrowable: 1
+--- !u!65 &65367149474630428
+BoxCollider:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1922473879920050}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Size: {x: 2, y: 1.999999, z: 1.9999981}
+  m_Center: {x: -0.44994298, y: 0.86147046, z: 0.10104504}
+--- !u!54 &54659512227780912
+Rigidbody:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1922473879920050}
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &114335325145704128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1922473879920050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507134321ba6604dc6c2156f757585c4, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  successTexts:
+  - tutObj_1
+  - tutObj_2
+  talkTexts: []
+  completeByDestory: 0
+  completeByDeath: 0
+  completeByTouch: 1
+  willNotEndQuest: 1
+  showArrow: 1
+  distanceToStartTalk: 0
+  arrowVOffset: 6
+  noQuestMarker: 1

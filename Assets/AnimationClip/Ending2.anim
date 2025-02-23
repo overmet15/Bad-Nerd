@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Ending2
+  m_AnimationType: 1
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 7.35
+        value: {x: 0, y: -0.70710933, z: 0, w: -0.70710427}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      - time: 10.583333
+        value: {x: 0, y: -0.70710933, z: 0, w: -0.70710427}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: badnerd
+  m_CompressedRotationCurves: []
+  m_PositionCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 2.5056062, y: -0.7942579, z: -1.4461327}
+        inSlope: {x: 5.98717, y: 0, z: 0}
+        outSlope: {x: 5.98717, y: 0, z: 0}
+        tangentMode: 0
+      - time: 5.0833335
+        value: {x: 32.940388, y: -0.7942579, z: -1.4461327}
+        inSlope: {x: 3.4390566, y: 0, z: 0}
+        outSlope: {x: 3.4390566, y: 0, z: 0}
+        tangentMode: 0
+      - time: 5.366667
+        value: {x: 33.19282, y: -0.7942579, z: -1.4461327}
+        inSlope: {x: 0.49002856, y: 0, z: 0}
+        outSlope: {x: 0.49002856, y: 0, z: 0}
+        tangentMode: 0
+      - time: 5.8
+        value: {x: 33.231438, y: -0.7942579, z: -1.4461327}
+        inSlope: {x: 0.05533057, y: 0, z: 0}
+        outSlope: {x: 0.05533057, y: 0, z: 0}
+        tangentMode: 0
+      - time: 7.35
+        value: {x: 33.264835, y: -0.7942579, z: -1.4461327}
+        inSlope: {x: 0.0107734455, y: 0, z: 0}
+        outSlope: {x: 0.0107734455, y: 0, z: 0}
+        tangentMode: 0
+      - time: 10.583333
+        value: {x: 33.264835, y: -0.7942579, z: -1.4461327}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: badnerd
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_PPtrCurves: []
+  m_SampleRate: 60
+  m_WrapMode: 8
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings: []
+    pptrCurveMapping: []
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_StartTime: 0
+    m_StopTime: 1
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_LoopTime: 0
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+  m_Events:
+  - time: 0
+    functionName: play
+    data: badnerd,Walk11,1
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.06666667
+    functionName: playActionMusic
+    data:
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 5.116667
+    functionName: play
+    data: badnerd,Idle90,1
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 5.383333
+    functionName: play
+    data: boy2,Walk5,1
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 7.2166667
+    functionName: play
+    data: boy2,zombiePose,1
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 13.85
+    functionName: showPanel
+    data:
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 4
+    messageOptions: 0

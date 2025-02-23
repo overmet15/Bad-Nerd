@@ -1,0 +1,25 @@
+public enum ThriftDataType
+{
+	Integer = 1,
+	String = 2,
+	Double = 3,
+	Float = 4,
+	Boolean = 5,
+	Byte = 6,
+	Character = 7,
+	Long = 8,
+	Short = 9,
+	EsObject = 10,
+	EsObjectArray = 11,
+	IntegerArray = 12,
+	StringArray = 13,
+	DoubleArray = 14,
+	FloatArray = 15,
+	BooleanArray = 16,
+	ByteArray = 17,
+	CharacterArray = 18,
+	LongArray = 19,
+	ShortArray = 20,
+	Number = 21,
+	NumberArray = 22
+}

@@ -1,0 +1,110 @@
+using UnityEngine;
+
+public class MyCameraRelativeControl : MonoBehaviour
+{
+	private AttackComponent attackComponent;
+
+	public MyJoystick moveJoystick;
+
+	public Transform cameraPivot;
+
+	public Transform cameraTransform;
+
+	public float speed = 5f;
+
+	public float jumpSpeed = 8f;
+
+	public float inAirMultiplier = 0.25f;
+
+	public Vector2 rotationSpeed = new Vector2(50f, 25f);
+
+	private Transform thisTransform;
+
+	private CharacterController character;
+
+	private Vector3 velocity;
+
+	private bool canJump = true;
+
+	private void Start()
+	{
+		attackComponent = GetComponent<AttackComponent>();
+		moveJoystick.attackComponent = attackComponent;
+		thisTransform = GetComponent<Transform>();
+		character = GetComponent<CharacterController>();
+		GameObject gameObject = GameObject.Find("PlayerSpawn");
+		if ((bool)gameObject)
+		{
+			thisTransform.position = gameObject.transform.position;
+		}
+	}
+
+	private void FaceMovementDirection()
+	{
+		Vector3 vector = character.velocity;
+		vector.y = 0f;
+		if (vector.magnitude > 0.1f)
+		{
+			thisTransform.forward = vector.normalized;
+		}
+	}
+
+	private void OnEndGame()
+	{
+		moveJoystick.Disable();
+		base.enabled = false;
+	}
+
+	public void toggle(bool on)
+	{
+		attackComponent.onStopWalking();
+		base.enabled = on;
+	}
+
+	private void Update()
+	{
+		if (PlayerAttackComponent.allowMoving)
+		{
+			bool flag = attackComponent.isHurting();
+			bool flag2 = attackComponent.isAttacking();
+			Vector2 vector = new Vector2(moveJoystick.position.x, moveJoystick.position.y);
+			if (GameStart.isZeemoteConnected)
+			{
+				vector = new Vector2(ZeemoteInput.GetAxis("Horizontal"), ZeemoteInput.GetAxis("Vertical"));
+			}
+			Vector3 vector2 = cameraTransform.TransformDirection(new Vector3(vector.x, 0f, vector.y));
+			vector2.y = 0f;
+			vector2.Normalize();
+			Vector2 vector3 = new Vector2(Mathf.Abs(vector.x), Mathf.Abs(vector.y));
+			float num = ((!(vector3.x > vector3.y)) ? vector3.y : vector3.x);
+			if (attackComponent.isRun)
+			{
+				num *= attackComponent.runSpeedMultiple;
+			}
+			vector2 *= speed * num;
+			if (vector2 == Vector3.zero)
+			{
+				attackComponent.onStopWalking();
+			}
+			else
+			{
+				attackComponent.onWalkPressed(vector2);
+			}
+			vector2 += velocity;
+			vector2 += Physics.gravity;
+			vector2 *= Time.deltaTime;
+			if (!flag && !flag2)
+			{
+				character.Move(vector2);
+			}
+			if (character.isGrounded)
+			{
+				velocity = Vector3.zero;
+			}
+			if (!flag2)
+			{
+				FaceMovementDirection();
+			}
+		}
+	}
+}

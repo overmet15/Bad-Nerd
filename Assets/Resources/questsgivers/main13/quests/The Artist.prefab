@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1286624560750768}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0
+--- !u!1 &1286624560750768
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 4951457437972190}
+  - 114: {fileID: 114431643827709401}
+  m_Layer: 0
+  m_Name: The Artist
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4951457437972190
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1286624560750768}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114431643827709401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1286624560750768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd4a91b71ae7d8545bc83609264161a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  chainedQuest: {fileID: 0}
+  storyTexts:
+  - main13_1
+  - main13_2
+  - main13_3
+  - main13_4
+  - main13_5
+  - main13_6
+  - main13_7
+  - main13_8
+  - main13_9
+  - main13_10
+  beginQuestTexts: []
+  successTexts: []
+  inProgressText: []
+  confirmationMsg:
+  levelToGoTo: Gym
+  levelToGoToWhenDone: ArtGallery
+  autoJumpToLocation: 0
+  gotoQuestDestinationFromInfirmary: 0
+  infoOnly: 1
+  delayBeforeCameraOn: 1
+  reward: {fileID: 0}
+  moneyReward: 30
+  shouldDoFB: 0
+  shouldDoKiip: 0
+  isDoNotPersistCompletion: 0
+  deletePlayerWhenDone: 0
+  episode: 0
+  considerCompleteIfDifferentEpisode: 0
+  nextQuestGiverLocation: ArtGallery
+  changeMusicToEpisode: 0
+  episodeMusic: 0
+  nextQuest: {fileID: 114971597665149664, guid: 7363ebed348fa8a4595e5228da5e1c53, type: 2}
+  doNotSpawnCrowd: 0

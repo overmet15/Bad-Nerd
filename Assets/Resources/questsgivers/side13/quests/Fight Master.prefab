@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1890216802049944}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0
+--- !u!1 &1890216802049944
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 4223767275231701}
+  - 114: {fileID: 114897511826316337}
+  m_Layer: 0
+  m_Name: Fight Master
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4223767275231701
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1890216802049944}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114897511826316337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1890216802049944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd4a91b71ae7d8545bc83609264161a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  chainedQuest: {fileID: 0}
+  storyTexts:
+  - side13_1
+  - side13_2
+  - side13_3
+  - side13_4
+  - side13_5
+  - side13_6
+  - side13_7
+  - side13_8
+  beginQuestTexts: []
+  successTexts:
+  - side13_9
+  - side13_10
+  - side13_11
+  - side13_12
+  - side13_13
+  - side13_14
+  inProgressText: []
+  confirmationMsg: side13_15
+  levelToGoTo: Auditorium
+  levelToGoToWhenDone: Auditorium
+  autoJumpToLocation: 0
+  gotoQuestDestinationFromInfirmary: 0
+  infoOnly: 1
+  delayBeforeCameraOn: 1
+  reward: {fileID: 0}
+  moneyReward: 30
+  shouldDoFB: 0
+  shouldDoKiip: 0
+  isDoNotPersistCompletion: 0
+  deletePlayerWhenDone: 0
+  episode: 0
+  considerCompleteIfDifferentEpisode: 0
+  nextQuestGiverLocation: Cafeteria
+  changeMusicToEpisode: 0
+  episodeMusic: 0
+  nextQuest: {fileID: 114264941320472586, guid: 278a34a8bb3dcfa4592941f86f3ff005, type: 2}
+  doNotSpawnCrowd: 0
