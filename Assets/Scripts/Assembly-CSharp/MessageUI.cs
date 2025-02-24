@@ -147,6 +147,10 @@ public class MessageUI : AbstractUI, IMessageUI
 
 	public void clickedOK()
 	{
+		{
+			Debug.Log("clickedOK was called");
+		}
+
 		if (!isActiveUI())
 		{
 			return;
