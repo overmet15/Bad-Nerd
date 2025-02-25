@@ -58,10 +58,10 @@ public class GameStart : MonoBehaviour
 		{
 			component.text = "Nerd vs Zombies";
 		}
-		if (GameCenterBinding.isGameCenterAvailable())
-		{
-			GameCenterBinding.authenticateLocalPlayer();
-		}
+	//	if (GameCenterBinding.isGameCenterAvailable())
+	//	{
+	//		GameCenterBinding.authenticateLocalPlayer();
+	//	}
 		if (PlayerPrefs.GetInt("hasSavedGame") == 0)
 		{
 			VNLUtil.toggleComponent(GameObject.Find("LoadButton").transform, false);
@@ -208,14 +208,14 @@ public class GameStart : MonoBehaviour
 		}
 	}
 
-	public void onScoresClicked()
+	/*public void onScoresClicked()
 	{
 		if (VNLUtil.getInstance().activeUIID == 0)
 		{
 			APIService.showLeaderBoard();
 		}
 	}
-
+*/
 	public void onGeekTagButtonClicked()
 	{
 		if (VNLUtil.getInstance().activeUIID == 0)
@@ -253,13 +253,13 @@ public class GameStart : MonoBehaviour
 		enableNetworking = false;
 	}
 
-	public void onAchievementsClicked()
-	{
-		if (VNLUtil.getInstance().activeUIID == 0)
-		{
-			GameCenterBinding.showAchievements();
-		}
-	}
+//	public void onAchievementsClicked()
+	//{
+	//	if (VNLUtil.getInstance().activeUIID == 0)
+	//	{
+		//	GameCenterBinding.showAchievements();
+		//}
+	//}
 
 	public void onBackButtonClicked()
 	{

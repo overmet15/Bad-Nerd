@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 
 public class GameCenterPlayer
@@ -41,3 +41,4 @@ public class GameCenterPlayer
 		return string.Format("<Player> playerId: {0}, alias: {1}, isFriend: {2}", playerId, alias, isFriend);
 	}
 }
+*/

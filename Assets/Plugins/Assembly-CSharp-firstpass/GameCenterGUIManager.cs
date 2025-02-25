@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+/*using System.Collections.Generic;
 using UnityEngine;
 
 public class GameCenterGUIManager : MonoBehaviour
@@ -108,3 +108,4 @@ public class GameCenterGUIManager : MonoBehaviour
 		}
 	}
 }
+*/

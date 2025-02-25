@@ -1,4 +1,4 @@
-using System.Runtime.InteropServices;
+/*using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class GameCenterBinding
@@ -261,3 +261,4 @@ public class GameCenterBinding
 		}
 	}
 }
+*/

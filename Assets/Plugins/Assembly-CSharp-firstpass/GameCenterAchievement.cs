@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -55,3 +55,4 @@ public class GameCenterAchievement
 		return string.Format("<Achievement> identifier: {0}, hidden: {1}, completed: {2}, percentComplete: {3}, lastReported: {4}", identifier, isHidden, completed, percentComplete, lastReportedDate);
 	}
 }
+*/

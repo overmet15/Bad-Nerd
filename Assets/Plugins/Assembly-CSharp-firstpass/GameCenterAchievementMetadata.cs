@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 
 public class GameCenterAchievementMetadata
@@ -41,3 +41,4 @@ public class GameCenterAchievementMetadata
 		return string.Format("<AchievementMetaData> identifier: {0}, hidden: {1}, maxPoints: {2}, title: {3} desc: {4}, unachDesc: {5}", identifier, isHidden, maximumPoints, title, description, unachievedDescription);
 	}
 }
+*/

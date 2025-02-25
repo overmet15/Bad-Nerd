@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -83,3 +83,4 @@ public class GameCenterScore
 		return string.Format("<Score> category: {0}, formattedValue: {1}, date: {2}, rank: {3}, alias: {4}, maxRange: {5}", category, formattedValue, date, rank, alias, maxRange);
 	}
 }
+*/

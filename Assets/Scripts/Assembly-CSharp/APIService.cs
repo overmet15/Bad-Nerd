@@ -275,7 +275,7 @@ public class APIService
 		Debug.Log("kiip: " + id);
 	}
 
-	public static void leaderBoard(string id)
+	/*public static void leaderBoard(string id)
 	{
 		int @int = PlayerPrefs.GetInt(id, 0);
 		@int++;
@@ -284,7 +284,7 @@ public class APIService
 		{
 			GameCenterBinding.reportScore(@int, id);
 		}
-	}
+	} 
 
 	public static void showLeaderBoard()
 	{
@@ -301,6 +301,7 @@ public class APIService
 			GameCenterBinding.showLeaderboardWithTimeScopeAndLeaderboard(GameCenterLeaderboardTimeScope.AllTime, "baddestBullyBeaterOnline");
 		}
 	}
+	*/
 
 	[DllImport("__Internal")]
 	private static extern void _logFlurryEvent(string str);

@@ -408,9 +408,9 @@ public class EnemyAttackComponent : AttackComponent
 			Time.timeScale = 0.2f;
 		}
 		APIService.logFlurryEvent("Killed-" + base.name);
-		reportLeaderBoard();
+	//	reportLeaderBoard();
 	}
-
+/*
 	protected virtual void reportLeaderBoard()
 	{
 		if (originallyIsnemyWithPlayer)
@@ -422,7 +422,7 @@ public class EnemyAttackComponent : AttackComponent
 			APIService.leaderBoard("naughtyBully");
 		}
 	}
-
+*/
 	protected override void dieDetachItems()
 	{
 		foreach (BadNerdItem item in itemList)

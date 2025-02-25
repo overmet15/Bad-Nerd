@@ -69,11 +69,11 @@ public class NetworkAttackComponent : EnemyAttackComponent
 		}
 	}
 
-	protected override void reportLeaderBoard()
+/*	protected override void reportLeaderBoard()
 	{
 		APIService.leaderBoard("baddestBullyBeaterOnline");
 	}
-
+*/
 	protected override void Update()
 	{
 		if (lastWalkTime < Time.fixedTime - 0.5f)

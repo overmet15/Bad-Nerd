@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 
 public class GameCenterLeaderboard
@@ -29,3 +29,4 @@ public class GameCenterLeaderboard
 		return string.Format("<Leaderboard> leaderboardId: {0}, title: {1}", leaderboardId, title);
 	}
 }
+*/

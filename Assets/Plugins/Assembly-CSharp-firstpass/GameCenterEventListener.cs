@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+/*using System.Collections.Generic;
 using UnityEngine;
 
 public class GameCenterEventListener : MonoBehaviour
@@ -195,3 +195,4 @@ public class GameCenterEventListener : MonoBehaviour
 		Debug.Log("reportAchievementFailed: " + error);
 	}
 }
+*/
