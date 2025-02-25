@@ -316,23 +316,23 @@ public class PlayerAttackComponent : AttackComponent
     // Added left mouse click binding for attack:
     protected override void Update()
     {
-      /*
-        if (GameStart.isZeemoteConnected)
-        {
-            if (ZeemoteInput.GetButtonDown(1, 0))
-            {
-                onAttackButtonPressed();
-            }
-            if (ZeemoteInput.GetButtonDown(1, 1))
-            {
-                onBlockPressed();
-            }
-            if (ZeemoteInput.GetButtonUp(1, 1))
-            {
-                onBlockReleased();
-            }
-        }
-        */
+        /*
+          if (GameStart.isZeemoteConnected)
+          {
+              if (ZeemoteInput.GetButtonDown(1, 0))
+              {
+                  onAttackButtonPressed();
+              }
+              if (ZeemoteInput.GetButtonDown(1, 1))
+              {
+                  onBlockPressed();
+              }
+              if (ZeemoteInput.GetButtonUp(1, 1))
+              {
+                  onBlockReleased();
+              }
+          }
+          */
 
         // Bind left mouse click to attack
         if (Input.GetMouseButtonDown(0))
@@ -563,10 +563,24 @@ public class PlayerAttackComponent : AttackComponent
         PlayerPrefs.SetInt("hasSavedGame", 1);
         PlayerPrefs.SetString("nextQuestGiverLocations", nextQuestGiverLocations);
         PlayerPrefs.SetInt("lunchMoney", lunchMoney);
+
+        // Save health and energy values:
+        PlayerPrefs.SetFloat("life", life);
+        PlayerPrefs.SetFloat("maxLife", maxLife);
+        PlayerPrefs.SetFloat("energy", energy);      // Add this line if 'energy' is your current energy
+        PlayerPrefs.SetFloat("maxEnergy", maxEnergy);
+        PlayerPrefs.SetFloat("recoveryRate", recoveryRate);
+        PlayerPrefs.SetFloat("strength", strength);
+        PlayerPrefs.SetFloat("capacity", capacity);
+        PlayerPrefs.SetFloat("knockDownProbabiliy", knockDownProbabiliy);
+        PlayerPrefs.SetFloat("attack1Level", attack1Level);
+        PlayerPrefs.SetFloat("attack2Level", attack2Level);
+        PlayerPrefs.SetFloat("attack3Level", attack3Level);
         PlayerPrefs.SetString("savedItemList", "");
-        // (Saving items logic omitted for brevity)
+        // (Additional saving logic omitted for brevity)
         Debug.Log("LEVELS_COMPLETED: " + string.Join(",", questsCompleted.ToArray()));
     }
+
 
     public string getEquippedItemsAsString()
     {
@@ -754,7 +768,7 @@ public class PlayerAttackComponent : AttackComponent
     {
         setCurrentEnemy(null);
         APIService.logFlurryEvent("Died");
-      //  APIService.showFullScreenAd();
+        //  APIService.showFullScreenAd();
         if (NetworkCore.isLoggedIn)
         {
             networkCore.announceDeath();

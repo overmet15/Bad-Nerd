@@ -2,8 +2,8 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1001 &100100000
 Prefab:
-  serializedVersion: 2
   m_ObjectHideFlags: 1
+  serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
@@ -11,20 +11,19 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1159712548935181}
   m_IsPrefabParent: 1
-  m_IsExploded: 0
 --- !u!1 &1159712548935181
 GameObject:
-  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4357720717550069}
-  - 33: {fileID: 33697641124785284}
-  - 23: {fileID: 23872664678078332}
-  - 114: {fileID: 114357866269921278}
-  - 54: {fileID: 54121868053037675}
-  - 65: {fileID: 65329044784744253}
+  - component: {fileID: 4357720717550069}
+  - component: {fileID: 33697641124785284}
+  - component: {fileID: 23872664678078332}
+  - component: {fileID: 114357866269921278}
+  - component: {fileID: 54121868053037675}
+  - component: {fileID: 65329044784744253}
   m_Layer: 0
   m_Name: Max Energy Upgrade
   m_TagString: Untagged
@@ -44,13 +43,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!33 &33697641124785284
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1159712548935181}
-  m_Mesh: {fileID: 4300000, guid: 72b8c6ffa63787143aeb119ce96181e4, type: 2}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23872664678078332
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -60,20 +53,65 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 733bd98d2c37e9440898638552e2f85e, type: 2}
-  m_SubsetIndices: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_LightProbeAnchor: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!33 &33697641124785284
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1159712548935181}
+  m_Mesh: {fileID: 4300000, guid: 72b8c6ffa63787143aeb119ce96181e4, type: 2}
+--- !u!54 &54121868053037675
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1159712548935181}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 14
+  m_CollisionDetection: 0
+--- !u!65 &65329044784744253
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1159712548935181}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.411112, y: 2.575675, z: 0.411112}
+  m_Center: {x: 0.0000009983778, y: 0.1373465, z: 0}
 --- !u!114 &114357866269921278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,10 +121,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0db3b2377648b08d9d808ee1220e6549, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   price: 899
-  description: Having lots of energy is important in any fight.\nThis upgrade will increase your maximum\nenergy so that you don't get tired easily\nand become harder to knock down!\nIncreases maximum energy by 50 points!
+  description: Having lots of energy is important in any fight.\nThis upgrade will
+    increase your maximum\nenergy so that you don't get tired easily\nand become harder
+    to knock down!\nIncreases maximum energy by 50 points!
   spin: 0
   spinSpeed: 1
   carryingWeight: 10
@@ -103,30 +143,3 @@ MonoBehaviour:
   dontStripDescriptionLineBreaks: 0
   count: 1
   healthValue: 50
---- !u!54 &54121868053037675
-Rigidbody:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1159712548935181}
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &65329044784744253
-BoxCollider:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1159712548935181}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Size: {x: 0.411112, y: 2.575675, z: 0.411112}
-  m_Center: {x: 9.983778E-07, y: 0.1373465, z: 0}
