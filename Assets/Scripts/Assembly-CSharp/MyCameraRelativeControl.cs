@@ -68,10 +68,10 @@ public class MyCameraRelativeControl : MonoBehaviour
             bool flag = attackComponent.isHurting();
             bool flag2 = attackComponent.isAttacking();
             Vector2 vector = new Vector2(moveJoystick.position.x, moveJoystick.position.y);
-            if (GameStart.isZeemoteConnected)
-            {
-                vector = new Vector2(ZeemoteInput.GetAxis("Horizontal"), ZeemoteInput.GetAxis("Vertical"));
-            }
+          //  if (GameStart.isZeemoteConnected)
+          //  {
+          //      vector = new Vector2(ZeemoteInput.GetAxis("Horizontal"), ZeemoteInput.GetAxis("Vertical"));
+          //  }
 
             // Added WASD keyboard support for movement:
             Vector2 keyboardInput = Vector2.zero;

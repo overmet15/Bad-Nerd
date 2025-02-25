@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class ZeemoteJoystick : MonoBehaviour
 {
@@ -91,3 +91,4 @@ public class ZeemoteJoystick : MonoBehaviour
 		position = Vector2.zero;
 	}
 }
+*/

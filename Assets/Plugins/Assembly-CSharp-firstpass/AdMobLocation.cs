@@ -1,3 +1,4 @@
+/*
 public enum AdMobLocation
 {
 	TopLeft = 0,
@@ -8,3 +9,4 @@ public enum AdMobLocation
 	BottomCenter = 5,
 	BottomRight = 6
 }
+*/

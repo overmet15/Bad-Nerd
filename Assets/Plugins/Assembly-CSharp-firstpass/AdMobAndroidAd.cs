@@ -1,3 +1,4 @@
+/*
 public enum AdMobAndroidAd
 {
 	phone320x50 = 0,
@@ -6,3 +7,4 @@ public enum AdMobAndroidAd
 	tablet728x90 = 3,
 	smartBanner = 4
 }
+*/

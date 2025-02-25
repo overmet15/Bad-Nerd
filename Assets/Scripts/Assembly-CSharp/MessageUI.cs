@@ -35,7 +35,7 @@ public class MessageUI : AbstractUI, IMessageUI
         blockedBG = base.transform.Find("Camera/Anchor/Panel/MsgBG2").GetComponent<UISlicedSprite>();
         blockedBG.enabled = false;
         messageLabel = base.transform.Find("Camera/Anchor/Panel/MessageUILabel").GetComponent<UILabel>();
-        APIService.toggleAd(true);
+        //APIService.toggleAd(true);
     }
 
     public void setMessage(string txt)
@@ -203,7 +203,7 @@ public class MessageUI : AbstractUI, IMessageUI
             playCloseSound();
             UnityEngine.Object.Destroy(base.gameObject);
             isClosed = true;
-            APIService.toggleAd(false);
+          //  APIService.toggleAd(false);
         }
     }
 

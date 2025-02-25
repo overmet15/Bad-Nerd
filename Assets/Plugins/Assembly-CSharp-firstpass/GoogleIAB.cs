@@ -1,20 +1,21 @@
+/*
 using UnityEngine;
 
 public class GoogleIAB
 {
 	private static AndroidJavaObject _plugin;
 
-	static GoogleIAB()
-	{
-		if (Application.platform != RuntimePlatform.Android)
-		{
-			return;
-		}
-		using (AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.prime31.GoogleIABPlugin"))
-		{
-			_plugin = androidJavaClass.CallStatic<AndroidJavaObject>("instance", new object[0]);
-		}
-	}
+	//static GoogleIAB()
+//	{
+	//	if (Application.platform != RuntimePlatform.Android)
+	//	{
+	//		return;
+	//	}
+	//	using (AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.prime31.GoogleIABPlugin"))
+	//	{
+	//		_plugin = androidJavaClass.CallStatic<AndroidJavaObject>("instance", new object[0]);
+	//	}
+	//}
 
 	public static void enableLogging(bool shouldEnable)
 	{
@@ -98,3 +99,4 @@ public class GoogleIAB
 		}
 	}
 }
+*/

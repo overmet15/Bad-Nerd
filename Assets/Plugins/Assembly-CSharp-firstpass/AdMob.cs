@@ -1,3 +1,4 @@
+/*
 using System;
 using Prime31;
 
@@ -74,3 +75,4 @@ public static class AdMob
 		AdMobAndroid.displayInterstital();
 	}
 }
+*/

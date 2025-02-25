@@ -1,3 +1,4 @@
+/*
 using Prime31;
 using UnityEngine;
 
@@ -12,19 +13,19 @@ public class AdMobComboUI : MonoBehaviourGUI
 		}
 		if (GUILayout.Button("Create Smart Banner"))
 		{
-			AdMob.createBanner("ca-app-pub-8386987260001674/2631573141", "ca-app-pub-8386987260001674/8398905145", AdMobBanner.SmartBanner, AdMobLocation.BottomCenter);
+		//	AdMob.createBanner("ca-app-pub-8386987260001674/2631573141", "ca-app-pub-8386987260001674/8398905145", AdMobBanner.SmartBanner, AdMobLocation.BottomCenter);
 		}
 		if (GUILayout.Button("Create 320x50 banner"))
 		{
-			AdMob.createBanner("ca-app-pub-8386987260001674/2631573141", "ca-app-pub-8386987260001674/8398905145", AdMobBanner.Phone_320x50, AdMobLocation.TopCenter);
+		//	AdMob.createBanner("ca-app-pub-8386987260001674/2631573141", "ca-app-pub-8386987260001674/8398905145", AdMobBanner.Phone_320x50, AdMobLocation.TopCenter);
 		}
 		if (GUILayout.Button("Create 300x250 banner"))
 		{
-			AdMob.createBanner("ca-app-pub-8386987260001674/2631573141", "ca-app-pub-8386987260001674/8398905145", AdMobBanner.Tablet_300x250, AdMobLocation.BottomCenter);
+		//	AdMob.createBanner("ca-app-pub-8386987260001674/2631573141", "ca-app-pub-8386987260001674/8398905145", AdMobBanner.Tablet_300x250, AdMobLocation.BottomCenter);
 		}
 		if (GUILayout.Button("Destroy Banner"))
 		{
-			AdMob.destroyBanner();
+		//	AdMob.destroyBanner();
 		}
 		endColumn(true);
 		if (GUILayout.Button("Request Interstitial"))
@@ -38,25 +39,25 @@ public class AdMobComboUI : MonoBehaviourGUI
 		}
 		if (GUILayout.Button("Display Interstitial"))
 		{
-			AdMob.displayInterstital();
+			//AdMob.displayInterstital();
 		}
 		endColumn();
 	}
 
 	private void OnEnable()
 	{
-		AdMob.receivedAdEvent += receivedAdEvent;
-		AdMob.failedToReceiveAdEvent += failedToReceiveAdEvent;
-		AdMob.interstitialReceivedAdEvent += interstitialReceivedAdEvent;
-		AdMob.interstitialFailedToReceiveAdEvent += interstitialFailedToReceiveAdEvent;
+	//	AdMob.receivedAdEvent += receivedAdEvent;
+	//	AdMob.failedToReceiveAdEvent += failedToReceiveAdEvent;
+	//	AdMob.interstitialReceivedAdEvent += interstitialReceivedAdEvent;
+	//	AdMob.interstitialFailedToReceiveAdEvent += interstitialFailedToReceiveAdEvent;
 	}
 
 	private void OnDisable()
 	{
-		AdMob.receivedAdEvent -= receivedAdEvent;
-		AdMob.failedToReceiveAdEvent -= failedToReceiveAdEvent;
-		AdMob.interstitialReceivedAdEvent -= interstitialReceivedAdEvent;
-		AdMob.interstitialFailedToReceiveAdEvent -= interstitialFailedToReceiveAdEvent;
+	//	AdMob.receivedAdEvent -= receivedAdEvent;
+	//	AdMob.failedToReceiveAdEvent -= failedToReceiveAdEvent;
+	//	AdMob.interstitialReceivedAdEvent -= interstitialReceivedAdEvent;
+	//	AdMob.interstitialFailedToReceiveAdEvent -= interstitialFailedToReceiveAdEvent;
 	}
 
 	private void receivedAdEvent()
@@ -79,3 +80,4 @@ public class AdMobComboUI : MonoBehaviourGUI
 		Debug.Log("interstitialFailedToReceiveAdEvent: " + error);
 	}
 }
+*/

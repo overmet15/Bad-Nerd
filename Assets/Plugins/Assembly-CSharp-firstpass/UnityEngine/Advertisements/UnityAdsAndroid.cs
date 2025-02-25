@@ -29,7 +29,7 @@ namespace UnityEngine.Advertisements
 			{
 				getAndroidWrapper().Call("enableUnityDeveloperInternalTestMode");
 			}
-			currentActivity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
+		//	currentActivity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
 			getAndroidWrapper().Call("init", gameId, currentActivity, testModeEnabled, (int)Advertisement.debugLevel, gameObjectName);
 		}
 

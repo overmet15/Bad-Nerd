@@ -16,11 +16,11 @@ public class APIService
 
 	private static float lastRefreshTime;
 
-	private static bool adMobBannerAlreadyCreated;
+//	private static bool adMobBannerAlreadyCreated;
 
-	private static string admobId;
+//	private static string admobId;
 
-	private static string admobInterstitialId;
+//	private static string admobInterstitialId;
 
 	private static bool onFBRequestCompleteAssigned;
 
@@ -35,7 +35,7 @@ public class APIService
 		return storeLinkAndroid2;
 	}
 
-	public static void androidCall(string method, object[] parameters)
+	/*public static void androidCall(string method, object[] parameters)
 	{
 		if (Application.isEditor)
 		{
@@ -71,11 +71,12 @@ public class APIService
 			}
 		}
 	}
+	*/
 
-	public static string getLang()
-	{
-		return androidCallWithReturn("getLang", null);
-	}
+//	public static string getLang()
+//	{
+	//	return androidCallWithReturn("getLang", null);
+//	}
 
 	public static void displayText(string txt)
 	{
@@ -84,14 +85,14 @@ public class APIService
 
 	public static void displayText(string txt, int left, int top, int right, int bottom, float scale)
 	{
-		Debug.Log("unity displayText: " + txt);
-		androidCall("displayText", new object[6] { txt, left, top, right, bottom, scale });
+		//Debug.Log("unity displayText: " + txt);
+	//	androidCall("displayText", new object[6] { txt, left, top, right, bottom, scale });
 	}
 
 	public static void unDisplayText()
 	{
-		Debug.Log("unity unDisplayText");
-		androidCall("unDisplayText", null);
+		//Debug.Log("unity unDisplayText");
+	//	androidCall("unDisplayText", null);
 	}
 
 	public static void initUnityAd(string id)
@@ -120,17 +121,17 @@ public class APIService
 
 	public static void initLeadBoltAd(string adId)
 	{
-		androidCall("initLeadBoltAd", new object[1] { adId });
+		//androidCall("initLeadBoltAd", new object[1] { adId });
 	}
 
 	public static void showLeadBoltAd()
 	{
-		androidCall("showLeadBoltAd", new object[1] { false });
+	//	androidCall("showLeadBoltAd", new object[1] { false });
 	}
 
 	public static void initLeadBoltNotifs(string notifId, string iconId)
 	{
-		androidCall("initLeadBoltNotifs", new object[2] { notifId, iconId });
+		//androidCall("initLeadBoltNotifs", new object[2] { notifId, iconId });
 	}
 
 	public static void exitGame(string exitTitle, string exitText)
@@ -146,7 +147,7 @@ public class APIService
 
 	public static void setVirtualItemId(string id)
 	{
-		androidCall("setVirtualItemId", new object[1] { id });
+	//	androidCall("setVirtualItemId", new object[1] { id });
 	}
 
 	public static void stopIAB()
@@ -154,7 +155,7 @@ public class APIService
 		Debug.Log("stopIAB...");
 	}
 
-	public static void toggleAd(bool on)
+	/*public static void toggleAd(bool on)
 	{
 		if (!VNLUtil.getInstance().isAmazonVersion)
 		{
@@ -193,10 +194,11 @@ public class APIService
 		};
 		AdMob.requestInterstital(admobInterstitialId, admobInterstitialId);
 	}
+	*/
 
 	public static void askUserToRate(string marketUrl, string rateTitle, string rateText)
 	{
-		androidCall("askUserToRate", new object[5] { marketUrl, rateTitle, rateText, "Later", "Don't ask again" });
+	//	androidCall("askUserToRate", new object[5] { marketUrl, rateTitle, rateText, "Later", "Don't ask again" });
 	}
 
 	public static void postToFB()
@@ -210,22 +212,22 @@ public class APIService
 		postToFB(msg, img, linkName, androidStoreLink, caption, desc);
 	}
 
-	public static void requestToFB(string msg)
-	{
-		lastFBRequestMessage = msg;
-		Debug.Log("fbReq: " + msg);
-		logFlurryEvent("requestToFB");
-		androidCall("fbRequest", new object[7]
-		{
-			msg,
-			"https://s3.amazonaws.com/org.lucius.edz/badnerdIcon.png",
-			"Bad Nerd",
-			getAndroidStoreLink(),
-			"Unleash The Nerd Rage!",
-			"Available On The App Store and Google Play!",
-			"Player"
-		});
-	}
+	//public static void requestToFB(string msg)
+//{
+	////	lastFBRequestMessage = msg;
+	//	Debug.Log("fbReq: " + msg);
+//		logFlurryEvent("requestToFB");
+	//	androidCall("fbRequest", new object[7]
+	//	{
+	//		msg,
+	//		"https://s3.amazonaws.com/org.lucius.edz/badnerdIcon.png",
+	//		"Bad Nerd",
+	//		getAndroidStoreLink(),
+		//	"Unleash The Nerd Rage!",
+		//	"Available On The App Store and Google Play!",
+		//	"Player"
+		//});
+//	}
 
 	private static void onFBRequestFailDueToLotLoggedIn(P31Error err)
 	{
@@ -233,8 +235,8 @@ public class APIService
 		{
 			VNLUtil.getInstance().doStartCoRoutine(delegate
 			{
-				Debug.Log("requestToFB 999, trying again...");
-				requestToFB(lastFBRequestMessage);
+				//Debug.Log("requestToFB 999, trying again...");
+			//	requestToFB(lastFBRequestMessage);
 			}, 5f);
 		}
 	}
@@ -267,7 +269,7 @@ public class APIService
 	{
 		Debug.Log("fb: " + msg + " - " + url);
 		logFlurryEvent("FacebookPosted");
-		androidCall("fbPost", new object[8] { "me", msg, img, linkName, url, caption, desc, "VNLUtil" });
+	//	androidCall("fbPost", new object[8] { "me", msg, img, linkName, url, caption, desc, "VNLUtil" });
 	}
 
 	public static void doKiip(string id)
@@ -315,31 +317,31 @@ public class APIService
 
 	public static void initFlurryAndroid(string id)
 	{
-		androidCall("initFlurry", new object[1] { id });
+		//androidCall("initFlurry", new object[1] { id });
 	}
 
 	public static void initFacebook(string id, string appPageId)
 	{
 		string text = "\n\niPhone: " + storeLinkApple + "\n\nAndroid: " + getAndroidStoreLink();
-		androidCall("initFacebook", new object[3] { id, appPageId, text });
+	//	androidCall("initFacebook", new object[3] { id, appPageId, text });
 	}
 
 	public static void logFlurryEvent(string str)
 	{
 		Debug.Log("flurry: " + str);
-		androidCall("logFlurryEvent", new object[1] { str });
+	//	androidCall("logFlurryEvent", new object[1] { str });
 	}
 
-	public static void buyAmazonItem()
-	{
-		Debug.Log("buyAmazonItem called");
-		if (VNLUtil.getInstance().episode == 0)
-		{
-			androidCall("buyAmazonItem", new object[2] { "00002", "Player" });
-		}
-		else
-		{
-			androidCall("buyAmazonItem", new object[2] { "00003", "Player" });
-		}
-	}
+	//public static void buyAmazonItem()
+//	{
+	//	Debug.Log("buyAmazonItem called");
+	//	if (VNLUtil.getInstance().episode == 0)
+	//	{
+	//		androidCall("buyAmazonItem", new object[2] { "00002", "Player" });
+	//	}
+	//	else
+	//	{
+		//	androidCall("buyAmazonItem", new object[2] { "00003", "Player" });
+		//}
+	//}
 }

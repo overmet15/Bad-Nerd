@@ -1,3 +1,4 @@
+/*
 public enum AdMobBanner
 {
 	Phone_320x50 = 0,
@@ -6,3 +7,4 @@ public enum AdMobBanner
 	Tablet_728x90 = 3,
 	SmartBanner = 4
 }
+*/

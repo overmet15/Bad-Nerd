@@ -1,3 +1,4 @@
+/*
 using UnityEngine;
 
 public class AdMobAndroidEventListener : MonoBehaviour
@@ -80,3 +81,4 @@ public class AdMobAndroidEventListener : MonoBehaviour
 		Debug.Log("interstitialReceivedAdEvent");
 	}
 }
+*/

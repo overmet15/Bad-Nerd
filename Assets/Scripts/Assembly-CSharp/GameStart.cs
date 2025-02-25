@@ -38,13 +38,13 @@ public class GameStart : MonoBehaviour
 		if (systemLanguage == SystemLanguage.Chinese)
 		{
 			Debug.Log("detecting type of zh");
-			string lang = APIService.getLang();
-			Debug.Log("detected: " + lang);
-			if (!lang.ToLower().Contains("cn"))
-			{
-				Debug.Log("switching language");
-				Language.SwitchLanguage(LanguageCode.ZA);
-			}
+			//string lang = APIService.getLang();
+		//	Debug.Log("detected: " + lang);
+			//if (!lang.ToLower().Contains("cn"))
+			//{
+			//	Debug.Log("switching language");
+			//	Language.SwitchLanguage(LanguageCode.ZA);
+			//}
 		}
 		mainMenu = GameObject.Find("MainMenu");
 		onlineMenu = GameObject.Find("OnlineMenu");
@@ -89,13 +89,13 @@ public class GameStart : MonoBehaviour
 			APIService.initFlurryAndroid("UA-34903179-1");
 		}
 		APIService.initFacebook("324125197666869", "396848653712131");
-		APIService.initAdmob("ca-app-pub-1844236426719231/7457068926", "ca-app-pub-1844236426719231/1238799725");
-		APIService.toggleAd(true);
+	//	APIService.initAdmob("ca-app-pub-1844236426719231/7457068926", "ca-app-pub-1844236426719231/1238799725");
+	//	APIService.toggleAd(true);
 		VNLUtil.getInstance().doStartCoRoutine(delegate
 		{
-			APIService.toggleAd(false);
+			//APIService.toggleAd(false);
 		}, 1f);
-		APIService.initUnityAd("131623436");
+	//	APIService.initUnityAd("131623436");
 		if (@int % 10 == 0)
 		{
 			APIService.logFlurryEvent("LoadGameFacebookAsked");
@@ -279,7 +279,7 @@ public class GameStart : MonoBehaviour
 		}
 	}
 
-	public void onControllerInitClicked()
+	/*public void onControllerInitClicked()
 	{
 		if (VNLUtil.getInstance().activeUIID != 0)
 		{
@@ -292,10 +292,10 @@ public class GameStart : MonoBehaviour
 		}
 		VNLUtil.getInstance().displayMessage("plsEnableController", delegate
 		{
-			bool flag = ZeemoteInput.SetupPlugin();
-			Debug.Log("setupZeemoteReturn: " + flag);
-			int num = ZeemoteInput.FindAvailableControllers();
-			Debug.Log("controllerCount: " + num);
+		//	bool flag = ZeemoteInput.SetupPlugin();
+			//Debug.Log("setupZeemoteReturn: " + flag);
+			//int num = ZeemoteInput.FindAvailableControllers();
+		//	Debug.Log("controllerCount: " + num);
 			if (num > 0)
 			{
 				int num2 = 0;
@@ -329,7 +329,7 @@ public class GameStart : MonoBehaviour
 			}
 		}, true, false);
 	}
-
+*/
 	private void loadLevel(string level)
 	{
 		VNLUtil.getInstance().resume();
@@ -339,10 +339,10 @@ public class GameStart : MonoBehaviour
 	private void OnApplicationQuit()
 	{
 		Debug.Log("quiting...");
-		if (isZeemoteConnected)
-		{
-			ZeemoteInput.DisconnectController(1);
-			ZeemoteInput.CleanupPlugin();
-		}
+	//	if (isZeemoteConnected)
+	//	{
+		//	ZeemoteInput.DisconnectController(1);
+		//	ZeemoteInput.CleanupPlugin();
+		//}
 	}
 }

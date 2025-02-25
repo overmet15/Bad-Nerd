@@ -316,6 +316,7 @@ public class PlayerAttackComponent : AttackComponent
     // Added left mouse click binding for attack:
     protected override void Update()
     {
+      /*
         if (GameStart.isZeemoteConnected)
         {
             if (ZeemoteInput.GetButtonDown(1, 0))
@@ -331,6 +332,7 @@ public class PlayerAttackComponent : AttackComponent
                 onBlockReleased();
             }
         }
+        */
 
         // Bind left mouse click to attack
         if (Input.GetMouseButtonDown(0))
@@ -752,7 +754,7 @@ public class PlayerAttackComponent : AttackComponent
     {
         setCurrentEnemy(null);
         APIService.logFlurryEvent("Died");
-        APIService.showFullScreenAd();
+      //  APIService.showFullScreenAd();
         if (NetworkCore.isLoggedIn)
         {
             networkCore.announceDeath();

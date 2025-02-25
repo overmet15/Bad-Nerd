@@ -28,9 +28,9 @@ public class ConfirmationUI : MessageUI
 	protected override void Update()
 	{
 		base.Update();
-		if (GameStart.isZeemoteConnected && ZeemoteInput.GetButtonUp(1, 1))
-		{
-			clickedNO();
-		}
+	//	if (GameStart.isZeemoteConnected && ZeemoteInput.GetButtonUp(1, 1))
+	//	{
+		//	clickedNO();
+		//}
 	}
 }

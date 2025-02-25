@@ -122,14 +122,14 @@ public class StoreUI : AbstractInventoryUI
 			{
 				VNLUtil.getInstance().displayConfirmation("askMomForSome", delegate
 				{
-					if (VNLUtil.getInstance().isAmazonVersion)
-					{
-						APIService.buyAmazonItem();
-					}
-					else
-					{
+				//	if (VNLUtil.getInstance().isAmazonVersion)
+				//	{
+					//	APIService.buyAmazonItem();
+				//	}
+				///	else
+					//{
 						APIService.showUnityAd();
-					}
+					//}
 				}, null).setBlock(true)
 					.setTitle("Lunch Money");
 				return;

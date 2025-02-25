@@ -1,3 +1,4 @@
+/*
 using Prime31;
 using UnityEngine;
 
@@ -12,28 +13,28 @@ public class AdMobUIManager : MonoBehaviourGUI
 		}
 		if (GUILayout.Button("Create Smart Banner"))
 		{
-			AdMobAndroid.createBanner("ca-app-pub-8386987260001674/8398905145", AdMobAndroidAd.smartBanner, AdMobAdPlacement.BottomCenter);
+			//AdMobAndroid.createBanner("ca-app-pub-8386987260001674/8398905145", AdMobAndroidAd.smartBanner, AdMobAdPlacement.BottomCenter);
 		}
 		if (GUILayout.Button("Create 320x50 banner"))
 		{
-			AdMobAndroid.createBanner("ca-app-pub-8386987260001674/8398905145", AdMobAndroidAd.phone320x50, AdMobAdPlacement.TopCenter);
+			//AdMobAndroid.createBanner("ca-app-pub-8386987260001674/8398905145", AdMobAndroidAd.phone320x50, AdMobAdPlacement.TopCenter);
 		}
 		if (GUILayout.Button("Create 300x250 banner"))
 		{
-			AdMobAndroid.createBanner("ca-app-pub-8386987260001674/8398905145", AdMobAndroidAd.tablet300x250, AdMobAdPlacement.BottomCenter);
+			//AdMobAndroid.createBanner("ca-app-pub-8386987260001674/8398905145", AdMobAndroidAd.tablet300x250, AdMobAdPlacement.BottomCenter);
 		}
 		if (GUILayout.Button("Destroy Banner"))
 		{
-			AdMobAndroid.destroyBanner();
+			//AdMobAndroid.destroyBanner();
 		}
 		endColumn(true);
 		if (GUILayout.Button("Refresh Ad"))
 		{
-			AdMobAndroid.refreshAd();
+			//AdMobAndroid.refreshAd();
 		}
 		if (GUILayout.Button("Request Interstitial"))
 		{
-			AdMobAndroid.requestInterstital("ca-app-pub-8386987260001674/9875638345");
+			//AdMobAndroid.requestInterstital("ca-app-pub-8386987260001674/9875638345");
 		}
 		if (GUILayout.Button("Is Interstitial Ready?"))
 		{
@@ -42,16 +43,17 @@ public class AdMobUIManager : MonoBehaviourGUI
 		}
 		if (GUILayout.Button("Display Interstitial"))
 		{
-			AdMobAndroid.displayInterstital();
+			//AdMobAndroid.displayInterstital();
 		}
 		if (GUILayout.Button("Hide Banner"))
 		{
-			AdMobAndroid.hideBanner(true);
+			//AdMobAndroid.hideBanner(true);
 		}
 		if (GUILayout.Button("Show Banner"))
 		{
-			AdMobAndroid.hideBanner(false);
+			//AdMobAndroid.hideBanner(false);
 		}
 		endColumn();
 	}
 }
+*/

@@ -7,7 +7,7 @@ public class QuestFB : Quest
 		base.onQuestCompleted();
 		if (isRequest)
 		{
-			APIService.requestToFB("This new game is absolutely amazing!  If you hate bullies then this game is for you.  Check it out now!");
+			//APIService.requestToFB("This new game is absolutely amazing!  If you hate bullies then this game is for you.  Check it out now!");
 		}
 		else
 		{

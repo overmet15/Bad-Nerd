@@ -1,3 +1,4 @@
+/*
 using System;
 using System.Collections.Generic;
 using Prime31;
@@ -85,3 +86,4 @@ public class GoogleIABManager : AbstractManager
 		GoogleIABManager.consumePurchaseFailedEvent.fire(error);
 	}
 }
+*/

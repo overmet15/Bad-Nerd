@@ -1,3 +1,4 @@
+/*
 using System;
 using System.Collections;
 using System.Threading;
@@ -761,3 +762,4 @@ public class ZeemoteInput : MonoBehaviour
 		return AndroidJNI.CallBooleanMethod(ZeemotePlugin.GetRawObject(), methodID, array);
 	}
 }
+*/

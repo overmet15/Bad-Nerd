@@ -24,7 +24,7 @@ public class QuestInitializer : MonoBehaviour
 	protected virtual void Awake()
 	{
 		VNLUtil.getInstance().updateEpisodeForSceneBasedOnCurrentScene();
-		APIService.toggleAd(false);
+		//APIService.toggleAd(false);
 		GameObject gameObject = GameObject.Find("/map");
 		if (gameObject != null)
 		{
