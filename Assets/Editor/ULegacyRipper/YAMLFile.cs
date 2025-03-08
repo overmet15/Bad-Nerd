@@ -364,7 +364,7 @@ namespace ULegacyRipper
             if (value.Contains("{") && !value.Contains("}"))
             {
                 value += " " + reader.ReadLine();
-                Debug.Log(value);
+                //Debug.Log(value);
             }
 
 

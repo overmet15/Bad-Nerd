@@ -13,6 +13,8 @@ namespace ULegacyRipper
 	{
 		public static void GenerateLightmap(string scenePath)
 		{
+			Debug.Log("Generating: " + Path.GetFileNameWithoutExtension(scenePath));
+
 			YAML yaml = YAMLReader.ReadYAML(File.ReadAllLines(scenePath));
 
 			YAML lightingDataYaml = new YAML();
@@ -41,12 +43,12 @@ namespace ULegacyRipper
 
 			if (!yaml.TryFindNode("LightmapSettings", out oldLightmaps))
 			{
-				Debug.Log("Skipping: " + scenePath);
+				Debug.Log("Skipping, no settings: " + scenePath);
 				return;
 			}
 			if (!oldLightmaps.childNodes.ContainsKey("m_Lightmaps"))
             {
-                Debug.Log("Skipping: " + scenePath);
+                Debug.Log("Skipping, no lightmaps: " + scenePath);
                 return;
             }
 
@@ -190,9 +192,10 @@ namespace ULegacyRipper
 
 			if (probePositions != null)
 			{
-				YAMLNode lightProbeGroup = yaml.FindNode("LightProbeGroup");
+				YAMLNode lightProbeGroup = null;
+                yaml.TryFindNode("LightProbeGroup", out lightProbeGroup);
 
-				if (lightProbeGroup != null)
+                if (lightProbeGroup != null)
 				{
 					Vector3 offset = Vector3.zero;
 					YAMLNode lightProbeComponents = yaml.nodes[long.Parse(lightProbeGroup.childNodes["m_GameObject"].table["fileID"])].childNodes["m_Component"];
