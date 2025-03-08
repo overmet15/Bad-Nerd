@@ -1,59 +1,93 @@
+//----------------------------------------------
+//            NGUI: Next-Gen UI kit
+// Copyright © 2011-2013 Tasharen Entertainment
+//----------------------------------------------
+
 using UnityEngine;
+using System.Collections;
+
+/// <summary>
+/// Allows dragging of the specified target panel's contents by mouse or touch.
+/// </summary>
 
 [ExecuteInEditMode]
 [AddComponentMenu("NGUI/Interaction/Drag Panel Contents")]
 public class UIDragPanelContents : MonoBehaviour
 {
+	/// <summary>
+	/// This panel's contents will be dragged by the script.
+	/// </summary>
+
 	public UIDraggablePanel draggablePanel;
 
-	[HideInInspector]
-	[SerializeField]
-	private UIPanel panel;
+	// Version 1.92 and earlier referenced the panel instead of UIDraggablePanel script.
+	[HideInInspector][SerializeField] UIPanel panel;
 
-	private void Awake()
+	/// <summary>
+	/// Backwards compatibility.
+	/// </summary>
+
+	void Awake ()
 	{
-		if (!(panel != null))
+		// Legacy functionality support for backwards compatibility
+		if (panel != null)
 		{
-			return;
-		}
-		if (draggablePanel == null)
-		{
-			draggablePanel = panel.GetComponent<UIDraggablePanel>();
 			if (draggablePanel == null)
 			{
-				draggablePanel = panel.gameObject.AddComponent<UIDraggablePanel>();
+				draggablePanel = panel.GetComponent<UIDraggablePanel>();
+
+				if (draggablePanel == null)
+				{
+					draggablePanel = panel.gameObject.AddComponent<UIDraggablePanel>();
+				}
 			}
+			panel = null;
 		}
-		panel = null;
 	}
 
-	private void Start()
+	/// <summary>
+	/// Automatically find the draggable panel if possible.
+	/// </summary>
+
+	void Start ()
 	{
 		if (draggablePanel == null)
 		{
-			draggablePanel = NGUITools.FindInParents<UIDraggablePanel>(base.gameObject);
+			draggablePanel = NGUITools.FindInParents<UIDraggablePanel>(gameObject);
 		}
 	}
 
-	private void OnPress(bool pressed)
+	/// <summary>
+	/// Create a plane on which we will be performing the dragging.
+	/// </summary>
+
+	void OnPress (bool pressed)
 	{
-		if (base.enabled && NGUITools.GetActive(base.gameObject) && draggablePanel != null)
+		if (enabled && NGUITools.GetActive(gameObject) && draggablePanel != null)
 		{
 			draggablePanel.Press(pressed);
 		}
 	}
 
-	private void OnDrag(Vector2 delta)
+	/// <summary>
+	/// Drag the object along the plane.
+	/// </summary>
+
+	void OnDrag (Vector2 delta)
 	{
-		if (base.enabled && NGUITools.GetActive(base.gameObject) && draggablePanel != null)
+		if (enabled && NGUITools.GetActive(gameObject) && draggablePanel != null)
 		{
-			draggablePanel.Drag(delta);
+			draggablePanel.Drag();
 		}
 	}
 
-	private void OnScroll(float delta)
+	/// <summary>
+	/// If the object should support the scroll wheel, do it.
+	/// </summary>
+
+	void OnScroll (float delta)
 	{
-		if (base.enabled && NGUITools.GetActive(base.gameObject) && draggablePanel != null)
+		if (enabled && NGUITools.GetActive(gameObject) && draggablePanel != null)
 		{
 			draggablePanel.Scroll(delta);
 		}

@@ -1,60 +1,78 @@
+//----------------------------------------------
+//            NGUI: Next-Gen UI kit
+// Copyright © 2011-2013 Tasharen Entertainment
+//----------------------------------------------
+
 using UnityEngine;
+
+/// <summary>
+/// Simple script that lets you localize a UIWidget.
+/// </summary>
 
 [RequireComponent(typeof(UIWidget))]
 [AddComponentMenu("NGUI/UI/Localize")]
 public class UILocalize : MonoBehaviour
 {
+	/// <summary>
+	/// Localization key.
+	/// </summary>
+
 	public string key;
 
-	private string mLanguage;
+	string mLanguage;
+	bool mStarted = false;
 
-	private bool mStarted;
+	/// <summary>
+	/// This function is called by the Localization manager via a broadcast SendMessage.
+	/// </summary>
 
-	private void OnLocalize(Localization loc)
-	{
-		if (mLanguage != loc.currentLanguage)
-		{
-			Localize();
-		}
-	}
+	void OnLocalize (Localization loc) { if (mLanguage != loc.currentLanguage) Localize(); }
 
-	private void OnEnable()
-	{
-		if (mStarted && Localization.instance != null)
-		{
-			Localize();
-		}
-	}
+	/// <summary>
+	/// Localize the widget on enable, but only if it has been started already.
+	/// </summary>
 
-	private void Start()
+	void OnEnable () { if (mStarted && Localization.instance != null) Localize(); }
+
+	/// <summary>
+	/// Localize the widget on start.
+	/// </summary>
+
+	void Start ()
 	{
 		mStarted = true;
-		if (Localization.instance != null)
-		{
-			Localize();
-		}
+		if (Localization.instance != null) Localize();
 	}
 
-	public void Localize()
+	/// <summary>
+	/// Force-localize the widget.
+	/// </summary>
+
+	public void Localize ()
 	{
-		Localization instance = Localization.instance;
-		UIWidget component = GetComponent<UIWidget>();
-		UILabel uILabel = component as UILabel;
-		UISprite uISprite = component as UISprite;
-		if (string.IsNullOrEmpty(mLanguage) && string.IsNullOrEmpty(key) && uILabel != null)
+		Localization loc = Localization.instance;
+		UIWidget w = GetComponent<UIWidget>();
+		UILabel lbl = w as UILabel;
+		UISprite sp = w as UISprite;
+
+		// If no localization key has been specified, use the label's text as the key
+		if (string.IsNullOrEmpty(mLanguage) && string.IsNullOrEmpty(key) && lbl != null) key = lbl.text;
+
+		// If we still don't have a key, leave the value as blank
+		string val = string.IsNullOrEmpty(key) ? "" : loc.Get(key);
+
+		if (lbl != null)
 		{
-			key = uILabel.text;
+			// If this is a label used by input, we should localize its default value instead
+			UIInput input = NGUITools.FindInParents<UIInput>(lbl.gameObject);
+			if (input != null && input.label == lbl) input.defaultText = val;
+			else lbl.text = val;
 		}
-		string text = ((!string.IsNullOrEmpty(key)) ? instance.Get(key) : instance.Get(component.name));
-		if (uILabel != null)
+		else if (sp != null)
 		{
-			uILabel.text = text;
+			sp.spriteName = val;
+			sp.MakePixelPerfect();
 		}
-		else if (uISprite != null)
-		{
-			uISprite.spriteName = text;
-			uISprite.MakePixelPerfect();
-		}
-		mLanguage = instance.currentLanguage;
+		mLanguage = loc.currentLanguage;
 	}
 }

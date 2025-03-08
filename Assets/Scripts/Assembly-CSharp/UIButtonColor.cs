@@ -1,112 +1,138 @@
+//----------------------------------------------
+//            NGUI: Next-Gen UI kit
+// Copyright © 2011-2013 Tasharen Entertainment
+//----------------------------------------------
+
 using UnityEngine;
+
+/// <summary>
+/// Simple example script of how a button can be colored when the mouse hovers over it or it gets pressed.
+/// </summary>
 
 [AddComponentMenu("NGUI/Interaction/Button Color")]
 public class UIButtonColor : MonoBehaviour
 {
+	/// <summary>
+	/// Target with a widget, renderer, or light that will have its color tweened.
+	/// </summary>
+
 	public GameObject tweenTarget;
+
+	/// <summary>
+	/// Color to apply on hover event (mouse only).
+	/// </summary>
 
 	public Color hover = new Color(0.6f, 1f, 0.2f, 1f);
 
+	/// <summary>
+	/// Color to apply on the pressed event.
+	/// </summary>
+
 	public Color pressed = Color.grey;
+
+	/// <summary>
+	/// Duration of the tween process.
+	/// </summary>
 
 	public float duration = 0.2f;
 
 	protected Color mColor;
+	protected bool mStarted = false;
+	protected bool mHighlighted = false;
 
-	protected bool mInitDone;
-
-	protected bool mStarted;
-
-	protected bool mHighlighted;
+	/// <summary>
+	/// UIButtonColor's default (starting) color. It's useful to be able to change it, just in case.
+	/// </summary>
 
 	public Color defaultColor
 	{
 		get
 		{
+			Start();
 			return mColor;
 		}
 		set
 		{
+			Start();
 			mColor = value;
 		}
 	}
 
-	private void Start()
+	void Start ()
 	{
-		mStarted = true;
-	}
-
-	protected virtual void OnEnable()
-	{
-		if (mStarted && mHighlighted)
-		{
-			OnHover(UICamera.IsHighlighted(base.gameObject));
-		}
-	}
-
-	private void OnDisable()
-	{
-		if (tweenTarget != null)
-		{
-			TweenColor component = tweenTarget.GetComponent<TweenColor>();
-			if (component != null)
-			{
-				component.color = mColor;
-				component.enabled = false;
-			}
-		}
-	}
-
-	protected void Init()
-	{
-		mInitDone = true;
-		if (tweenTarget == null)
-		{
-			tweenTarget = base.gameObject;
-		}
-		UIWidget component = tweenTarget.GetComponent<UIWidget>();
-		if (component != null)
-		{
-			mColor = component.color;
-			return;
-		}
-		Renderer renderer = tweenTarget.GetComponent<Renderer>();
-		if (renderer != null)
-		{
-			mColor = renderer.material.color;
-			return;
-		}
-		Light light = tweenTarget.GetComponent<Light>();
-		if (light != null)
-		{
-			mColor = light.color;
-			return;
-		}
-		Debug.LogWarning(NGUITools.GetHierarchy(base.gameObject) + " has nothing for UIButtonColor to color", this);
-		base.enabled = false;
-	}
-
-	protected virtual void OnPress(bool isPressed)
-	{
-		if (!mInitDone)
+		if (!mStarted)
 		{
 			Init();
-		}
-		if (base.enabled)
-		{
-			TweenColor.Begin(tweenTarget, duration, isPressed ? pressed : ((!UICamera.IsHighlighted(base.gameObject)) ? mColor : hover));
+			mStarted = true;
 		}
 	}
 
-	protected virtual void OnHover(bool isOver)
+	protected virtual void OnEnable () { if (mStarted && mHighlighted) OnHover(UICamera.IsHighlighted(gameObject)); }
+
+	void OnDisable ()
 	{
-		if (base.enabled)
+		if (mStarted && tweenTarget != null)
 		{
-			if (!mInitDone)
+			TweenColor tc = tweenTarget.GetComponent<TweenColor>();
+
+			if (tc != null)
 			{
-				Init();
+				tc.color = mColor;
+				tc.enabled = false;
 			}
-			TweenColor.Begin(tweenTarget, duration, (!isOver) ? mColor : hover);
+		}
+	}
+
+	protected void Init ()
+	{
+		if (tweenTarget == null) tweenTarget = gameObject;
+		UIWidget widget = tweenTarget.GetComponent<UIWidget>();
+
+		if (widget != null)
+		{
+			mColor = widget.color;
+		}
+		else
+		{
+			Renderer ren = tweenTarget.GetComponent<Renderer>();
+
+			if (ren != null)
+			{
+				mColor = ren.material.color;
+			}
+			else
+			{
+				Light lt = tweenTarget.GetComponent<Light>();
+
+				if (lt != null)
+				{
+					mColor = lt.color;
+				}
+				else
+				{
+					Debug.LogWarning(NGUITools.GetHierarchy(gameObject) + " has nothing for UIButtonColor to color", this);
+					enabled = false;
+				}
+			}
+		}
+		OnEnable();
+	}
+
+	public virtual void OnPress (bool isPressed)
+	{
+		if (enabled)
+		{
+			if (!mStarted) Start();
+			TweenColor.Begin(tweenTarget, duration, isPressed ? pressed : (UICamera.IsHighlighted(gameObject) ? hover : mColor));
+		}
+	}
+
+	public virtual void OnHover (bool isOver)
+	{
+		if (enabled)
+		{
+			if (!mStarted) Start();
+			TweenColor.Begin(tweenTarget, duration, isOver ? hover : mColor);
 			mHighlighted = isOver;
 		}
 	}

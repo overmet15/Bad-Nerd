@@ -1,48 +1,81 @@
+//----------------------------------------------
+//            NGUI: Next-Gen UI kit
+// Copyright © 2011-2013 Tasharen Entertainment
+//----------------------------------------------
+
 using UnityEngine;
 
-[ExecuteInEditMode]
+/// <summary>
+/// Sample script showing how easy it is to implement a standard button that swaps sprites.
+/// </summary>
+
 [AddComponentMenu("NGUI/UI/Image Button")]
 public class UIImageButton : MonoBehaviour
 {
 	public UISprite target;
-
 	public string normalSprite;
-
 	public string hoverSprite;
-
 	public string pressedSprite;
+	public string disabledSprite;
+	
+	public bool isEnabled
+	{
+		get
+		{
+			Collider col = GetComponent<Collider>();
+			return col && col.enabled;
+		}
+		set
+		{
+			Collider col = GetComponent<Collider>();
+			if (!col) return;
 
-	private void OnEnable()
+			if (col.enabled != value)
+			{
+				col.enabled = value;
+				UpdateImage();
+			}
+		}
+	}
+
+	void OnEnable ()
+	{
+		if (target == null) target = GetComponentInChildren<UISprite>();
+		UpdateImage();
+	}
+	
+	void UpdateImage()
 	{
 		if (target != null)
 		{
-			target.spriteName = ((!UICamera.IsHighlighted(base.gameObject)) ? normalSprite : hoverSprite);
-		}
-	}
-
-	private void Start()
-	{
-		if (target == null)
-		{
-			target = GetComponentInChildren<UISprite>();
-		}
-	}
-
-	private void OnHover(bool isOver)
-	{
-		if (base.enabled && target != null)
-		{
-			target.spriteName = ((!isOver) ? normalSprite : hoverSprite);
+			if (isEnabled)
+			{
+				target.spriteName = UICamera.IsHighlighted(gameObject) ? hoverSprite : normalSprite;
+			}
+			else
+			{
+				target.spriteName = disabledSprite;
+			}
 			target.MakePixelPerfect();
 		}
 	}
 
-	private void OnPress(bool pressed)
+	void OnHover (bool isOver)
 	{
-		if (base.enabled && target != null)
+		if (isEnabled && target != null)
 		{
-			target.spriteName = ((!pressed) ? normalSprite : pressedSprite);
+			target.spriteName = isOver ? hoverSprite : normalSprite;
 			target.MakePixelPerfect();
 		}
+	}
+
+	void OnPress (bool pressed)
+	{
+		if (pressed)
+		{
+			target.spriteName = pressedSprite;
+			target.MakePixelPerfect();
+		}
+		else UpdateImage();
 	}
 }

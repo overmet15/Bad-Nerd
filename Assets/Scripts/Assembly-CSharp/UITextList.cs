@@ -1,175 +1,192 @@
-using System.Collections.Generic;
+//----------------------------------------------
+//            NGUI: Next-Gen UI kit
+// Copyright © 2011-2013 Tasharen Entertainment
+//----------------------------------------------
+
 using UnityEngine;
+using System.Collections.Generic;
+using System.Text;
+
+/// <summary>
+/// Text list can be used with a UILabel to create a scrollable multi-line text field that's
+/// easy to add new entries to. Optimal use: chat window.
+/// </summary>
 
 [AddComponentMenu("NGUI/UI/Text List")]
 public class UITextList : MonoBehaviour
 {
 	public enum Style
 	{
-		Text = 0,
-		Chat = 1
+		Text,
+		Chat,
 	}
 
-	protected class Paragraph
-	{
-		public string text;
-
-		public string[] lines;
-	}
-
-	public Style style;
-
+	public Style style = Style.Text;
 	public UILabel textLabel;
-
-	public float maxWidth;
-
-	public float maxHeight;
-
+	public float maxWidth = 0f;
+	public float maxHeight = 0f;
 	public int maxEntries = 50;
-
 	public bool supportScrollWheel = true;
 
-	protected char[] mSeparator = new char[1] { '\n' };
+	// Text list is made up of paragraphs
+	protected class Paragraph
+	{
+		public string text;		// Original text
+		public string[] lines;	// Split lines
+	}
 
+	protected char[] mSeparator = new char[] { '\n' };
 	protected List<Paragraph> mParagraphs = new List<Paragraph>();
+	protected float mScroll = 0f;
+	protected bool mSelected = false;
+	protected int mTotalLines = 0;
 
-	protected float mScroll;
+	/// <summary>
+	/// Clear the text.
+	/// </summary>
 
-	protected bool mSelected;
-
-	protected int mTotalLines;
-
-	public void Clear()
+	public void Clear ()
 	{
 		mParagraphs.Clear();
 		UpdateVisibleText();
 	}
 
-	public void Add(string text)
-	{
-		Add(text, true);
-	}
+	/// <summary>
+	/// Add a new paragraph.
+	/// </summary>
 
-	protected void Add(string text, bool updateVisible)
+	public void Add (string text) { Add(text, true); }
+
+	/// <summary>
+	/// Add a new paragraph.
+	/// </summary>
+
+	protected void Add (string text, bool updateVisible)
 	{
-		Paragraph paragraph = null;
+		Paragraph ce = null;
+
 		if (mParagraphs.Count < maxEntries)
 		{
-			paragraph = new Paragraph();
+			ce = new Paragraph();
 		}
 		else
 		{
-			paragraph = mParagraphs[0];
+			ce = mParagraphs[0];
 			mParagraphs.RemoveAt(0);
 		}
-		paragraph.text = text;
-		mParagraphs.Add(paragraph);
+
+		ce.text = text;
+		mParagraphs.Add(ce);
+		
 		if (textLabel != null && textLabel.font != null)
 		{
-			paragraph.lines = textLabel.font.WrapText(paragraph.text, maxWidth / textLabel.transform.localScale.y, textLabel.maxLineCount, textLabel.supportEncoding, textLabel.symbolStyle).Split(mSeparator);
+			// Rebuild the line
+			Vector3 scale = textLabel.transform.localScale;
+			string line;
+			textLabel.font.WrapText(ce.text, out line, maxWidth / scale.x, maxHeight / scale.y,
+				textLabel.maxLineCount, textLabel.supportEncoding, textLabel.symbolStyle);
+			ce.lines = line.Split(mSeparator);
+
+			// Recalculate the total number of lines
 			mTotalLines = 0;
-			int i = 0;
-			for (int count = mParagraphs.Count; i < count; i++)
-			{
-				mTotalLines += mParagraphs[i].lines.Length;
-			}
+			for (int i = 0, imax = mParagraphs.Count; i < imax; ++i) mTotalLines += mParagraphs[i].lines.Length;
 		}
-		if (updateVisible)
+
+		// Update the visible text
+		if (updateVisible) UpdateVisibleText();
+	}
+
+	/// <summary>
+	/// Automatically find the values if none were specified.
+	/// </summary>
+
+	void Awake ()
+	{
+		if (textLabel == null) textLabel = GetComponentInChildren<UILabel>();
+		if (textLabel != null) textLabel.lineWidth = 0;
+
+		Collider col = GetComponent<Collider>();
+
+		if (col != null)
 		{
-			UpdateVisibleText();
+			// Automatically set the width and height based on the collider
+			if (maxHeight <= 0f) maxHeight = col.bounds.size.y / transform.lossyScale.y;
+			if (maxWidth  <= 0f) maxWidth  = col.bounds.size.x / transform.lossyScale.x;
 		}
 	}
 
-	private void Awake()
+	/// <summary>
+	/// Remember whether the widget is selected.
+	/// </summary>
+
+	void OnSelect (bool selected) { mSelected = selected; }
+
+	/// <summary>
+	/// Refill the text label based on what's currently visible.
+	/// </summary>
+
+	protected void UpdateVisibleText ()
 	{
-		if (textLabel == null)
-		{
-			textLabel = GetComponentInChildren<UILabel>();
-		}
 		if (textLabel != null)
 		{
-			textLabel.lineWidth = 0;
-		}
-		Collider collider = base.GetComponent<Collider>();
-		if (collider != null)
-		{
-			if (maxHeight <= 0f)
+			UIFont font = textLabel.font;
+
+			if (font != null)
 			{
-				maxHeight = collider.bounds.size.y / base.transform.lossyScale.y;
-			}
-			if (maxWidth <= 0f)
-			{
-				maxWidth = collider.bounds.size.x / base.transform.lossyScale.x;
+				int lines = 0;
+				int maxLines = maxHeight > 0 ? Mathf.FloorToInt(maxHeight / textLabel.cachedTransform.localScale.y) : 100000;
+				int offset = Mathf.RoundToInt(mScroll);
+
+				// Don't let scrolling to exceed the visible number of lines
+				if (maxLines + offset > mTotalLines)
+				{
+					offset = Mathf.Max(0, mTotalLines - maxLines);
+					mScroll = offset;
+				}
+
+				if (style == Style.Chat)
+				{
+					offset = Mathf.Max(0, mTotalLines - maxLines - offset);
+				}
+
+				StringBuilder final = new StringBuilder();
+
+				for (int i = 0, imax = mParagraphs.Count; i < imax; ++i)
+				{
+					Paragraph p = mParagraphs[i];
+
+					for (int b = 0, bmax = p.lines.Length; b < bmax; ++b)
+					{
+						string s = p.lines[b];
+
+						if (offset > 0)
+						{
+							--offset;
+						}
+						else
+						{
+							if (final.Length > 0) final.Append("\n");
+							final.Append(s);
+							++lines;
+							if (lines >= maxLines) break;
+						}
+					}
+					if (lines >= maxLines) break;
+				}
+				textLabel.text = final.ToString();
 			}
 		}
 	}
 
-	private void OnSelect(bool selected)
-	{
-		mSelected = selected;
-	}
+	/// <summary>
+	/// Allow scrolling of the text list.
+	/// </summary>
 
-	protected void UpdateVisibleText()
-	{
-		if (!(textLabel != null))
-		{
-			return;
-		}
-		UIFont font = textLabel.font;
-		if (!(font != null))
-		{
-			return;
-		}
-		int num = 0;
-		int num2 = ((!(maxHeight > 0f)) ? 100000 : Mathf.FloorToInt(maxHeight / textLabel.cachedTransform.localScale.y));
-		int num3 = Mathf.RoundToInt(mScroll);
-		if (num2 + num3 > mTotalLines)
-		{
-			num3 = Mathf.Max(0, mTotalLines - num2);
-			mScroll = num3;
-		}
-		if (style == Style.Chat)
-		{
-			num3 = Mathf.Max(0, mTotalLines - num2 - num3);
-		}
-		string text = string.Empty;
-		int i = 0;
-		for (int count = mParagraphs.Count; i < count; i++)
-		{
-			Paragraph paragraph = mParagraphs[i];
-			int j = 0;
-			for (int num4 = paragraph.lines.Length; j < num4; j++)
-			{
-				string text2 = paragraph.lines[j];
-				if (num3 > 0)
-				{
-					num3--;
-					continue;
-				}
-				if (text.Length > 0)
-				{
-					text += "\n";
-				}
-				text += text2;
-				num++;
-				if (num >= num2)
-				{
-					break;
-				}
-			}
-			if (num >= num2)
-			{
-				break;
-			}
-		}
-		textLabel.text = text;
-	}
-
-	private void OnScroll(float val)
+	void OnScroll (float val)
 	{
 		if (mSelected && supportScrollWheel)
 		{
-			val *= ((style != Style.Chat) ? (-10f) : 10f);
+			val *= (style == Style.Chat) ? 10f : -10f;
 			mScroll = Mathf.Max(0f, mScroll + val);
 			UpdateVisibleText();
 		}

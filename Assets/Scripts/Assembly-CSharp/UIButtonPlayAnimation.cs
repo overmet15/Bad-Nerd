@@ -1,53 +1,99 @@
-using AnimationOrTween;
+﻿//----------------------------------------------
+//            NGUI: Next-Gen UI kit
+// Copyright © 2011-2013 Tasharen Entertainment
+//----------------------------------------------
+
 using UnityEngine;
+using AnimationOrTween;
+
+/// <summary>
+/// Play the specified animation on click.
+/// Sends out the "OnAnimationFinished()" notification to the target when the animation finishes.
+/// </summary>
 
 [AddComponentMenu("NGUI/Interaction/Button Play Animation")]
 public class UIButtonPlayAnimation : MonoBehaviour
 {
+	/// <summary>
+	/// Target animation to activate.
+	/// </summary>
+
 	public Animation target;
+
+	/// <summary>
+	/// Optional clip name, if the animation has more than one clip.
+	/// </summary>
 
 	public string clipName;
 
-	public Trigger trigger;
+	/// <summary>
+	/// Which event will trigger the animation.
+	/// </summary>
+
+	public Trigger trigger = Trigger.OnClick;
+
+	/// <summary>
+	/// Which direction to animate in.
+	/// </summary>
 
 	public Direction playDirection = Direction.Forward;
 
-	public bool resetOnPlay;
+	/// <summary>
+	/// Whether the animation's position will be reset on play or will continue from where it left off.
+	/// </summary>
 
-	public bool clearSelection;
+	public bool resetOnPlay = false;
 
-	public EnableCondition ifDisabledOnPlay;
+	/// <summary>
+	/// Whether the selected object (this button) will be cleared when the animation gets activated.
+	/// </summary>
 
-	public DisableCondition disableWhenFinished;
+	public bool clearSelection = false;
+
+	/// <summary>
+	/// What to do if the target game object is currently disabled.
+	/// </summary>
+
+	public EnableCondition ifDisabledOnPlay = EnableCondition.DoNothing;
+
+	/// <summary>
+	/// What to do with the target when the animation finishes.
+	/// </summary>
+
+	public DisableCondition disableWhenFinished = DisableCondition.DoNotDisable;
+
+	/// <summary>
+	/// Event receiver to trigger the callback on when the animation finishes.
+	/// </summary>
 
 	public GameObject eventReceiver;
 
+	/// <summary>
+	/// Function to call on the event receiver when the animation finishes.
+	/// </summary>
+
 	public string callWhenFinished;
+
+	/// <summary>
+	/// Delegate to call. Faster than using 'eventReceiver', and allows for multiple receivers.
+	/// </summary>
 
 	public ActiveAnimation.OnFinished onFinished;
 
-	private bool mStarted;
+	bool mStarted = false;
+	bool mHighlighted = false;
 
-	private bool mHighlighted;
+	void Start () { mStarted = true; }
 
-	private void Start()
+	void OnEnable () { if (mStarted && mHighlighted) OnHover(UICamera.IsHighlighted(gameObject)); }
+
+	void OnHover (bool isOver)
 	{
-		mStarted = true;
-	}
-
-	private void OnEnable()
-	{
-		if (mStarted && mHighlighted)
+		if (enabled)
 		{
-			OnHover(UICamera.IsHighlighted(base.gameObject));
-		}
-	}
-
-	private void OnHover(bool isOver)
-	{
-		if (base.enabled)
-		{
-			if (trigger == Trigger.OnHover || (trigger == Trigger.OnHoverTrue && isOver) || (trigger == Trigger.OnHoverFalse && !isOver))
+			if ( trigger == Trigger.OnHover ||
+				(trigger == Trigger.OnHoverTrue && isOver) ||
+				(trigger == Trigger.OnHoverFalse && !isOver))
 			{
 				Play(isOver);
 			}
@@ -55,75 +101,85 @@ public class UIButtonPlayAnimation : MonoBehaviour
 		}
 	}
 
-	private void OnPress(bool isPressed)
+	void OnPress (bool isPressed)
 	{
-		if (base.enabled && (trigger == Trigger.OnPress || (trigger == Trigger.OnPressTrue && isPressed) || (trigger == Trigger.OnPressFalse && !isPressed)))
+		if (enabled)
 		{
-			Play(isPressed);
+			if ( trigger == Trigger.OnPress ||
+				(trigger == Trigger.OnPressTrue && isPressed) ||
+				(trigger == Trigger.OnPressFalse && !isPressed))
+			{
+				Play(isPressed);
+			}
 		}
 	}
 
-	private void OnClick()
+	void OnClick ()
 	{
-		if (base.enabled && trigger == Trigger.OnClick)
+		if (enabled && trigger == Trigger.OnClick)
 		{
 			Play(true);
 		}
 	}
 
-	private void OnDoubleClick()
+	void OnDoubleClick ()
 	{
-		if (base.enabled && trigger == Trigger.OnDoubleClick)
+		if (enabled && trigger == Trigger.OnDoubleClick)
 		{
 			Play(true);
 		}
 	}
 
-	private void OnSelect(bool isSelected)
+	void OnSelect (bool isSelected)
 	{
-		if (base.enabled && (trigger == Trigger.OnSelect || (trigger == Trigger.OnSelectTrue && isSelected) || (trigger == Trigger.OnSelectFalse && !isSelected)))
+		if (enabled)
 		{
-			Play(true);
+			if (trigger == Trigger.OnSelect ||
+				(trigger == Trigger.OnSelectTrue && isSelected) ||
+				(trigger == Trigger.OnSelectFalse && !isSelected))
+			{
+				Play(true);
+			}
 		}
 	}
 
-	private void OnActivate(bool isActive)
+	void OnActivate (bool isActive)
 	{
-		if (base.enabled && (trigger == Trigger.OnActivate || (trigger == Trigger.OnActivateTrue && isActive) || (trigger == Trigger.OnActivateFalse && !isActive)))
+		if (enabled)
 		{
-			Play(isActive);
+			if (trigger == Trigger.OnActivate ||
+				(trigger == Trigger.OnActivateTrue && isActive) ||
+				(trigger == Trigger.OnActivateFalse && !isActive))
+			{
+				Play(isActive);
+			}
 		}
 	}
 
-	private void Play(bool forward)
+	void Play (bool forward)
 	{
-		if (target == null)
-		{
-			target = GetComponentInChildren<Animation>();
-		}
+		if (target == null) target = GetComponentInChildren<Animation>();
+
 		if (target != null)
 		{
-			if (clearSelection && UICamera.selectedObject == base.gameObject)
-			{
-				UICamera.selectedObject = null;
-			}
-			int num = 0 - playDirection;
-			Direction direction = ((!forward) ? ((Direction)num) : playDirection);
-			ActiveAnimation activeAnimation = ActiveAnimation.Play(target, clipName, direction, ifDisabledOnPlay, disableWhenFinished);
-			if (resetOnPlay)
-			{
-				activeAnimation.Reset();
-			}
-			activeAnimation.onFinished = onFinished;
+			if (clearSelection && UICamera.selectedObject == gameObject) UICamera.selectedObject = null;
+
+			int pd = -(int)playDirection;
+			Direction dir = forward ? playDirection : ((Direction)pd);
+			ActiveAnimation anim = ActiveAnimation.Play(target, clipName, dir, ifDisabledOnPlay, disableWhenFinished);
+			if (anim == null) return;
+			if (resetOnPlay) anim.Reset();
+
+			// Set the delegate
+			anim.onFinished = onFinished;
+
+			// Copy the event receiver
 			if (eventReceiver != null && !string.IsNullOrEmpty(callWhenFinished))
 			{
-				activeAnimation.eventReceiver = eventReceiver;
-				activeAnimation.callWhenFinished = callWhenFinished;
+				anim.eventReceiver = eventReceiver;
+				anim.callWhenFinished = callWhenFinished;
 			}
-			else
-			{
-				activeAnimation.eventReceiver = null;
-			}
+			else anim.eventReceiver = null;
 		}
 	}
 }

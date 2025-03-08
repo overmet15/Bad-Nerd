@@ -1,100 +1,112 @@
-using System;
+//----------------------------------------------
+//            NGUI: Next-Gen UI kit
+// Copyright © 2011-2013 Tasharen Entertainment
+//----------------------------------------------
+
 using UnityEngine;
+
+/// <summary>
+/// Attach this script to a popup list, the parent of a group of checkboxes, or to a checkbox itself to save its state.
+/// </summary>
 
 [AddComponentMenu("NGUI/Interaction/Saved Option")]
 public class UISavedOption : MonoBehaviour
 {
+	/// <summary>
+	/// PlayerPrefs-stored key for this option.
+	/// </summary>
+
 	public string keyName;
 
-	private UIPopupList mList;
+	string key { get { return (string.IsNullOrEmpty(keyName)) ? "NGUI State: " + name : keyName; } }
 
-	private UICheckbox mCheck;
+	UIPopupList mList;
+	UICheckbox mCheck;
 
-	private string key
-	{
-		get
-		{
-			return (!string.IsNullOrEmpty(keyName)) ? keyName : ("NGUI State: " + base.name);
-		}
-	}
+	/// <summary>
+	/// Cache the components and register a listener callback.
+	/// </summary>
 
-	private void Awake()
+	void Awake ()
 	{
 		mList = GetComponent<UIPopupList>();
 		mCheck = GetComponent<UICheckbox>();
+		if (mList != null) mList.onSelectionChange += SaveSelection;
+		if (mCheck != null) mCheck.onStateChange += SaveState;
+	}
+
+	/// <summary>
+	/// Remove the callback.
+	/// </summary>
+
+	void OnDestroy ()
+	{
+		if (mCheck != null) mCheck.onStateChange -= SaveState;
+		if (mList != null) mList.onSelectionChange -= SaveSelection;
+	}
+
+	/// <summary>
+	/// Load and set the state of the checkboxes.
+	/// </summary>
+
+	void OnEnable ()
+	{
 		if (mList != null)
 		{
-			UIPopupList uIPopupList = mList;
-			uIPopupList.onSelectionChange = (UIPopupList.OnSelectionChange)Delegate.Combine(uIPopupList.onSelectionChange, new UIPopupList.OnSelectionChange(SaveSelection));
+			string s = PlayerPrefs.GetString(key);
+			if (!string.IsNullOrEmpty(s)) mList.selection = s;
+			return;
 		}
+
 		if (mCheck != null)
 		{
-			UICheckbox uICheckbox = mCheck;
-			uICheckbox.onStateChange = (UICheckbox.OnStateChange)Delegate.Combine(uICheckbox.onStateChange, new UICheckbox.OnStateChange(SaveState));
+			mCheck.isChecked = (PlayerPrefs.GetInt(key, 1) != 0);
 		}
-	}
+		else
+		{
+			string s = PlayerPrefs.GetString(key);
+			UICheckbox[] checkboxes = GetComponentsInChildren<UICheckbox>(true);
 
-	private void OnDestroy()
-	{
-		if (mList != null)
-		{
-			UIPopupList uIPopupList = mList;
-			uIPopupList.onSelectionChange = (UIPopupList.OnSelectionChange)Delegate.Remove(uIPopupList.onSelectionChange, new UIPopupList.OnSelectionChange(SaveSelection));
-		}
-	}
-
-	private void OnEnable()
-	{
-		string @string = PlayerPrefs.GetString(key);
-		if (string.IsNullOrEmpty(@string))
-		{
-			return;
-		}
-		if (mList != null)
-		{
-			mList.selection = @string;
-			return;
-		}
-		if (mCheck != null)
-		{
-			mCheck.isChecked = @string == "true";
-			return;
-		}
-		UICheckbox[] componentsInChildren = GetComponentsInChildren<UICheckbox>();
-		int i = 0;
-		for (int num = componentsInChildren.Length; i < num; i++)
-		{
-			UICheckbox uICheckbox = componentsInChildren[i];
-			uICheckbox.isChecked = uICheckbox.name == @string;
-		}
-	}
-
-	private void OnDisable()
-	{
-		if (!(mCheck == null) || !(mList == null))
-		{
-			return;
-		}
-		UICheckbox[] componentsInChildren = GetComponentsInChildren<UICheckbox>();
-		int i = 0;
-		for (int num = componentsInChildren.Length; i < num; i++)
-		{
-			UICheckbox uICheckbox = componentsInChildren[i];
-			if (uICheckbox.isChecked)
+			for (int i = 0, imax = checkboxes.Length; i < imax; ++i)
 			{
-				SaveSelection(uICheckbox.name);
-				break;
+				UICheckbox ch = checkboxes[i];
+				ch.isChecked = (ch.name == s);
 			}
 		}
 	}
 
-	private void SaveSelection(string selection)
+	/// <summary>
+	/// Save the state on destroy.
+	/// </summary>
+
+	void OnDisable ()
 	{
-		PlayerPrefs.SetString(key, selection);
+		if (mCheck == null && mList == null)
+		{
+			UICheckbox[] checkboxes = GetComponentsInChildren<UICheckbox>(true);
+
+			for (int i = 0, imax = checkboxes.Length; i < imax; ++i)
+			{
+				UICheckbox ch = checkboxes[i];
+
+				if (ch.isChecked)
+				{
+					SaveSelection(ch.name);
+					break;
+				}
+			}
+		}
 	}
 
-	private void SaveState(bool state)
-	{
-		PlayerPrefs.SetString(key, (!state) ? "false" : "true");
-	}
+	/// <summary>
+	/// Save the selection.
+	/// </summary>
+
+	void SaveSelection (string selection) { PlayerPrefs.SetString(key, selection); }
+
+	/// <summary>
+	/// Save the state.
+	/// </summary>
+
+	void SaveState (bool state) { PlayerPrefs.SetInt(key, state ? 1 : 0); }
 }

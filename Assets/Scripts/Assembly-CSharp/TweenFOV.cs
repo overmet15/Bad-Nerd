@@ -1,49 +1,59 @@
+//----------------------------------------------
+//            NGUI: Next-Gen UI kit
+// Copyright © 2011-2013 Tasharen Entertainment
+//----------------------------------------------
+
 using UnityEngine;
 
-[AddComponentMenu("NGUI/Tween/Field of View")]
+/// <summary>
+/// Tween the camera's field of view.
+/// </summary>
+
 [RequireComponent(typeof(Camera))]
+[AddComponentMenu("NGUI/Tween/Field of View")]
 public class TweenFOV : UITweener
 {
 	public float from;
-
 	public float to;
 
-	private Camera mCam;
+	Camera mCam;
 
-	public Camera cachedCamera
+	/// <summary>
+	/// Camera that's being tweened.
+	/// </summary>
+
+	public Camera cachedCamera { get { if (mCam == null) mCam = GetComponent<Camera>(); return mCam; } }
+
+	/// <summary>
+	/// Current field of view value.
+	/// </summary>
+
+	public float fov { get { return cachedCamera.fieldOfView; } set { cachedCamera.fieldOfView = value; } }
+
+	/// <summary>
+	/// Perform the tween.
+	/// </summary>
+
+	protected override void OnUpdate (float factor, bool isFinished)
 	{
-		get
-		{
-			if (mCam == null)
-			{
-				mCam = base.GetComponent<Camera>();
-			}
-			return mCam;
-		}
+		cachedCamera.fieldOfView = from * (1f - factor) + to * factor;
 	}
 
-	public float fov
-	{
-		get
-		{
-			return cachedCamera.fov;
-		}
-		set
-		{
-			cachedCamera.fov = value;
-		}
-	}
+	/// <summary>
+	/// Start the tweening operation.
+	/// </summary>
 
-	protected override void OnUpdate(float factor, bool isFinished)
+	static public TweenFOV Begin (GameObject go, float duration, float to)
 	{
-		cachedCamera.fov = from * (1f - factor) + to * factor;
-	}
+		TweenFOV comp = UITweener.Begin<TweenFOV>(go, duration);
+		comp.from = comp.fov;
+		comp.to = to;
 
-	public static TweenFOV Begin(GameObject go, float duration, float to)
-	{
-		TweenFOV tweenFOV = UITweener.Begin<TweenFOV>(go, duration);
-		tweenFOV.from = tweenFOV.fov;
-		tweenFOV.to = to;
-		return tweenFOV;
+		if (duration <= 0f)
+		{
+			comp.Sample(1f, true);
+			comp.enabled = false;
+		}
+		return comp;
 	}
 }

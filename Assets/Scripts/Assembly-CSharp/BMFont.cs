@@ -1,274 +1,130 @@
-using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿//----------------------------------------------
+//            NGUI: Next-Gen UI kit
+// Copyright © 2011-2013 Tasharen Entertainment
+//----------------------------------------------
 
-[Serializable]
+using UnityEngine;
+using System.Collections.Generic;
+
+/// <summary>
+/// BMFont reader. C# implementation of http://www.angelcode.com/products/bmfont/
+/// </summary>
+
+[System.Serializable]
 public class BMFont
 {
-	[HideInInspector]
-	[SerializeField]
-	private BMGlyph[] mGlyphs;
+	[HideInInspector][SerializeField] int mSize = 0;			// How much to move the cursor when moving to the next line
+	[HideInInspector][SerializeField] int mBase = 0;			// Offset from the top of the line to the base of each character
+	[HideInInspector][SerializeField] int mWidth = 0;			// Original width of the texture
+	[HideInInspector][SerializeField] int mHeight = 0;			// Original height of the texture
+	[HideInInspector][SerializeField] string mSpriteName;
 
-	[HideInInspector]
-	[SerializeField]
-	private int mSize;
+	// List of serialized glyphs
+	[HideInInspector][SerializeField] List<BMGlyph> mSaved = new List<BMGlyph>();
 
-	[HideInInspector]
-	[SerializeField]
-	private int mBase;
+	// Actual glyphs that we'll be working with are stored in a dictionary, making the lookup faster
+	Dictionary<int, BMGlyph> mDict = new Dictionary<int, BMGlyph>();
 
-	[SerializeField]
-	[HideInInspector]
-	private int mWidth;
+	/// <summary>
+	/// Whether the font can be used.
+	/// </summary>
 
-	[SerializeField]
-	[HideInInspector]
-	private int mHeight;
+	public bool isValid { get { return (mSaved.Count > 0); } }
 
-	[HideInInspector]
-	[SerializeField]
-	private string mSpriteName;
+	/// <summary>
+	/// Size of this font (for example 32 means 32 pixels).
+	/// </summary>
 
-	[SerializeField]
-	[HideInInspector]
-	private List<BMGlyph> mSaved = new List<BMGlyph>();
+	public int charSize { get { return mSize; } set { mSize = value; } }
 
-	[HideInInspector]
-	[SerializeField]
-	private List<BMSymbol> mSymbols = new List<BMSymbol>();
+	/// <summary>
+	/// Base offset applied to characters.
+	/// </summary>
 
-	private Dictionary<int, BMGlyph> mDict = new Dictionary<int, BMGlyph>();
+	public int baseOffset { get { return mBase; } set { mBase = value; } }
 
-	public bool isValid
+	/// <summary>
+	/// Original width of the texture.
+	/// </summary>
+
+	public int texWidth { get { return mWidth; } set { mWidth = value; } }
+
+	/// <summary>
+	/// Original height of the texture.
+	/// </summary>
+
+	public int texHeight { get { return mHeight; } set { mHeight = value; } }
+
+	/// <summary>
+	/// Number of valid glyphs.
+	/// </summary>
+
+	public int glyphCount { get { return isValid ? mSaved.Count : 0; } }
+
+	/// <summary>
+	/// Original name of the sprite that the font is expecting to find (usually the name of the texture).
+	/// </summary>
+
+	public string spriteName { get { return mSpriteName; } set { mSpriteName = value; } }
+
+	/// <summary>
+	/// Helper function that retrieves the specified glyph, creating it if necessary.
+	/// </summary>
+
+	public BMGlyph GetGlyph (int index, bool createIfMissing)
 	{
-		get
-		{
-			return mSaved.Count > 0 || LegacyCheck();
-		}
-	}
+		// Get the requested glyph
+		BMGlyph glyph = null;
 
-	public int charSize
-	{
-		get
-		{
-			return mSize;
-		}
-		set
-		{
-			mSize = value;
-		}
-	}
-
-	public int baseOffset
-	{
-		get
-		{
-			return mBase;
-		}
-		set
-		{
-			mBase = value;
-		}
-	}
-
-	public int texWidth
-	{
-		get
-		{
-			return mWidth;
-		}
-		set
-		{
-			mWidth = value;
-		}
-	}
-
-	public int texHeight
-	{
-		get
-		{
-			return mHeight;
-		}
-		set
-		{
-			mHeight = value;
-		}
-	}
-
-	public int glyphCount
-	{
-		get
-		{
-			return isValid ? mSaved.Count : 0;
-		}
-	}
-
-	public string spriteName
-	{
-		get
-		{
-			return mSpriteName;
-		}
-		set
-		{
-			mSpriteName = value;
-		}
-	}
-
-	public List<BMSymbol> symbols
-	{
-		get
-		{
-			return mSymbols;
-		}
-	}
-
-	public bool LegacyCheck()
-	{
-		if (mGlyphs != null && mGlyphs.Length > 0)
-		{
-			int i = 0;
-			for (int num = mGlyphs.Length; i < num; i++)
-			{
-				BMGlyph bMGlyph = mGlyphs[i];
-				if (bMGlyph != null)
-				{
-					bMGlyph.index = i;
-					mSaved.Add(bMGlyph);
-					mDict.Add(i, bMGlyph);
-				}
-			}
-			mGlyphs = null;
-			return true;
-		}
-		return false;
-	}
-
-	private int GetArraySize(int index)
-	{
-		if (index < 256)
-		{
-			return 256;
-		}
-		if (index < 65536)
-		{
-			return 65536;
-		}
-		if (index < 262144)
-		{
-			return 262144;
-		}
-		return 0;
-	}
-
-	public BMGlyph GetGlyph(int index, bool createIfMissing)
-	{
-		BMGlyph value = null;
 		if (mDict.Count == 0)
 		{
-			if (mSaved.Count == 0)
+			// Populate the dictionary for faster access
+			for (int i = 0, imax = mSaved.Count; i < imax; ++i)
 			{
-				LegacyCheck();
-			}
-			else
-			{
-				int i = 0;
-				for (int count = mSaved.Count; i < count; i++)
-				{
-					BMGlyph bMGlyph = mSaved[i];
-					mDict.Add(bMGlyph.index, bMGlyph);
-				}
+				BMGlyph bmg = mSaved[i];
+				mDict.Add(bmg.index, bmg);
 			}
 		}
-		if (!mDict.TryGetValue(index, out value) && createIfMissing)
+
+		// Saved check is here so that the function call is not needed if it's true
+		if (!mDict.TryGetValue(index, out glyph) && createIfMissing)
 		{
-			value = new BMGlyph();
-			value.index = index;
-			mSaved.Add(value);
-			mDict.Add(index, value);
+			glyph = new BMGlyph();
+			glyph.index = index;
+			mSaved.Add(glyph);
+			mDict.Add(index, glyph);
 		}
-		return value;
+		return glyph;
 	}
 
-	public BMGlyph GetGlyph(int index)
-	{
-		return GetGlyph(index, false);
-	}
+	/// <summary>
+	/// Retrieve the specified glyph, if it's present.
+	/// </summary>
 
-	public BMSymbol GetSymbol(string sequence, bool createIfMissing)
-	{
-		int i = 0;
-		for (int count = mSymbols.Count; i < count; i++)
-		{
-			BMSymbol bMSymbol = mSymbols[i];
-			if (bMSymbol.sequence == sequence)
-			{
-				return bMSymbol;
-			}
-		}
-		if (createIfMissing)
-		{
-			BMSymbol bMSymbol2 = new BMSymbol();
-			bMSymbol2.sequence = sequence;
-			mSymbols.Add(bMSymbol2);
-			return bMSymbol2;
-		}
-		return null;
-	}
+	public BMGlyph GetGlyph (int index) { return GetGlyph(index, false); }
 
-	public BMSymbol MatchSymbol(string text, int offset, int textLength)
-	{
-		int count = mSymbols.Count;
-		if (count == 0)
-		{
-			return null;
-		}
-		textLength -= offset;
-		for (int i = 0; i < count; i++)
-		{
-			BMSymbol bMSymbol = mSymbols[i];
-			int length = bMSymbol.length;
-			if (length == 0 || textLength < length)
-			{
-				continue;
-			}
-			bool flag = true;
-			for (int j = 0; j < length; j++)
-			{
-				if (text[offset + j] != bMSymbol.sequence[j])
-				{
-					flag = false;
-					break;
-				}
-			}
-			if (flag)
-			{
-				return bMSymbol;
-			}
-		}
-		return null;
-	}
+	/// <summary>
+	/// Clear the glyphs.
+	/// </summary>
 
-	public void Clear()
+	public void Clear ()
 	{
-		mGlyphs = null;
 		mDict.Clear();
 		mSaved.Clear();
 	}
 
-	public void Trim(int xMin, int yMin, int xMax, int yMax)
+	/// <summary>
+	/// Trim the glyphs, ensuring that they will never go past the specified bounds.
+	/// </summary>
+
+	public void Trim (int xMin, int yMin, int xMax, int yMax)
 	{
-		if (!isValid)
+		if (isValid)
 		{
-			return;
-		}
-		int i = 0;
-		for (int count = mSaved.Count; i < count; i++)
-		{
-			BMGlyph bMGlyph = mSaved[i];
-			if (bMGlyph != null)
+			for (int i = 0, imax = mSaved.Count; i < imax; ++i)
 			{
-				bMGlyph.Trim(xMin, yMin, xMax, yMax);
+				BMGlyph glyph = mSaved[i];
+				if (glyph != null) glyph.Trim(xMin, yMin, xMax, yMax);
 			}
 		}
 	}
