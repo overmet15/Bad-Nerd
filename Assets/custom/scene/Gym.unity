@@ -14997,14 +14997,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: New Label
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -15012,6 +15011,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &880
@@ -15126,14 +15127,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Washroom
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -15141,6 +15141,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &885
@@ -15192,14 +15194,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Gym
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -15207,6 +15208,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &888
@@ -15220,14 +15223,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Grand Library
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -15235,6 +15237,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &889
@@ -15316,14 +15320,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Cafeteria
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -15331,6 +15334,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &893
@@ -15344,14 +15349,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Art Gallery
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -15359,6 +15363,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &894
@@ -15398,14 +15404,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: New Label
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -15413,6 +15418,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &896
@@ -15466,14 +15473,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: New Label
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -15481,6 +15487,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &899
@@ -15494,14 +15502,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Infirmary
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -15509,6 +15516,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &900
@@ -15533,8 +15542,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
@@ -15543,6 +15550,7 @@ MonoBehaviour:
 
     Arena'
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -15550,6 +15558,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &902
@@ -15563,14 +15573,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Main Hall
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -15578,6 +15587,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &903
@@ -15617,14 +15628,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Bright Hall
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -15632,6 +15642,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &905
@@ -15645,14 +15657,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Main Hall
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -15660,6 +15671,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &906
@@ -15673,14 +15686,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Playground
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -15688,6 +15700,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &907
@@ -15771,14 +15785,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: New Label
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -15786,6 +15799,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &911
@@ -15799,14 +15814,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Play Room
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -15814,6 +15828,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &912
@@ -15827,14 +15843,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Auditorium
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -15842,6 +15857,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &913
@@ -15855,14 +15872,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Bright Hall
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -15870,6 +15886,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &914
@@ -15883,10 +15901,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7c3bff608434c7f74859fbc7af5fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortByDepth: 0
   showInPanelTool: 1
   generateNormals: 0
   depthPass: 0
   widgetsAreStatic: 0
+  cullWhileDragging: 0
+  worldToLocal:
+    e00: 0.00000021895583
+    e01: -0.00000022199688
+    e02: -0.10204081
+    e03: -0.048017144
+    e10: 4.660777
+    e11: 0
+    e12: 0.00000986204
+    e13: 225.95953
+    e20: -0.0000000029428944
+    e21: -0.09874758
+    e22: 0.00000021777514
+    e23: 0.5040117
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  mAlpha: 1
   mDebugInfo: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 0, w: 0}
@@ -15902,10 +15940,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7c3bff608434c7f74859fbc7af5fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortByDepth: 0
   showInPanelTool: 1
   generateNormals: 0
   depthPass: 0
   widgetsAreStatic: 0
+  cullWhileDragging: 0
+  worldToLocal:
+    e00: -0.000000687278
+    e01: -0.0000002524074
+    e02: 0.10204083
+    e03: 0.16006589
+    e10: -4.6607776
+    e11: -0.0000005556079
+    e12: -0.000030697338
+    e13: 307.29465
+    e20: -1.5436162e-14
+    e21: -0.098747596
+    e22: -0.00000025897583
+    e23: 0.4988187
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  mAlpha: 1
   mDebugInfo: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 0, w: 0}
@@ -15921,10 +15979,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7c3bff608434c7f74859fbc7af5fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortByDepth: 0
   showInPanelTool: 1
   generateNormals: 0
   depthPass: 0
   widgetsAreStatic: 0
+  cullWhileDragging: 0
+  worldToLocal:
+    e00: -1.6171397
+    e01: 0.00000002172048
+    e02: -0.000007134795
+    e03: -382.16904
+    e10: -0.000007134794
+    e11: 0.0000027952822
+    e12: 1.6171396
+    e13: 228.46576
+    e20: 0.000000021732612
+    e21: 1.6171396
+    e22: -0.000002698893
+    e23: 1.8725998
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  mAlpha: 1
   mDebugInfo: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 0, w: 0}
@@ -15940,10 +16018,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7c3bff608434c7f74859fbc7af5fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortByDepth: 0
   showInPanelTool: 1
   generateNormals: 0
   depthPass: 0
   widgetsAreStatic: 0
+  cullWhileDragging: 0
+  worldToLocal:
+    e00: 0.0000001946274
+    e01: 0.0000000060821064
+    e02: -0.10204081
+    e03: 4.1013308
+    e10: 4.660777
+    e11: -0.0000011112159
+    e12: 0.000009306433
+    e13: 226.42278
+    e20: -0.000000017657444
+    e21: -0.098747596
+    e22: -0.000000011771628
+    e23: 0.49554074
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  mAlpha: 1
   mDebugInfo: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 0, w: 0}
@@ -15959,10 +16057,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7c3bff608434c7f74859fbc7af5fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortByDepth: 0
   showInPanelTool: 1
   generateNormals: 0
   depthPass: 0
   widgetsAreStatic: 0
+  cullWhileDragging: 0
+  worldToLocal:
+    e00: -0.000000687278
+    e01: -0.0000002524074
+    e02: 0.10204083
+    e03: -3.9892817
+    e10: -4.6607776
+    e11: -0.0000005556079
+    e12: -0.000030697338
+    e13: 307.20807
+    e20: -1.5436162e-14
+    e21: -0.098747596
+    e22: -0.00000025897583
+    e23: 0.4988292
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  mAlpha: 1
   mDebugInfo: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 0, w: 0}
@@ -15978,431 +16096,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7c3bff608434c7f74859fbc7af5fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortByDepth: 0
   showInPanelTool: 1
   generateNormals: 0
   depthPass: 0
   widgetsAreStatic: 0
+  cullWhileDragging: 0
+  worldToLocal:
+    e00: -1.6171397
+    e01: 0.00000002172048
+    e02: -0.000007134795
+    e03: -382.16904
+    e10: -0.000007134794
+    e11: 0.0000027952822
+    e12: 1.6171396
+    e13: 228.46576
+    e20: 0.000000021732612
+    e21: 1.6171396
+    e22: -0.000002698893
+    e23: 1.8725998
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  mAlpha: 1
   mDebugInfo: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 0, w: 0}
   mClipSoftness: {x: 40, y: 40}
---- !u!1 &152210037
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 152210038}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &152210038
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 152210037}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 22
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &243697295
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 243697296}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &243697296
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 243697295}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 24
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &431407399
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 431407400}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &431407400
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 431407399}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &441485124
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 441485125}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &441485125
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 441485124}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 21
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &551082111
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 551082112}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &551082112
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 551082111}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &559098514
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 559098515}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &559098515
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 559098514}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &937007288
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 937007289}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &937007289
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 937007288}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 23
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1047139782
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1047139783}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1047139783
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1047139782}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1082782949
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1082782950}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1082782950
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1082782949}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1180950708
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1180950709}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1180950709
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1180950708}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1320926558
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1320926559}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1320926559
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1320926558}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 25
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1341771611
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1341771612}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1341771612
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1341771611}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1477911963
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1477911964}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1477911964
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1477911963}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1530890372
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1530890373}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1530890373
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1530890372}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 19
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1617526906
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1617526907}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1617526907
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1617526906}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

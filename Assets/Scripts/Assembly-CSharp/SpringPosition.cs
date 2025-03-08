@@ -1,93 +1,133 @@
+﻿//----------------------------------------------
+//            NGUI: Next-Gen UI kit
+// Copyright © 2011-2013 Tasharen Entertainment
+//----------------------------------------------
+
 using UnityEngine;
+
+/// <summary>
+/// Spring-like motion -- the farther away the object is from the target, the stronger the pull.
+/// </summary>
 
 [AddComponentMenu("NGUI/Tween/Spring Position")]
 public class SpringPosition : IgnoreTimeScale
 {
-	public delegate void OnFinished(SpringPosition spring);
+	public delegate void OnFinished (SpringPosition spring);
+
+	/// <summary>
+	/// Target position to tween to.
+	/// </summary>
 
 	public Vector3 target = Vector3.zero;
 
+	/// <summary>
+	/// How strong is the pull of the spring. Higher value means it gets to the target faster.
+	/// </summary>
+
 	public float strength = 10f;
 
-	public bool worldSpace;
+	/// <summary>
+	/// Is the calculation done in world space or local space?
+	/// </summary>
 
-	public bool ignoreTimeScale;
+	public bool worldSpace = false;
+
+	/// <summary>
+	/// Whether the time scale will be ignored. Generally UI components should set it to 'true'.
+	/// </summary>
+
+	public bool ignoreTimeScale = false;
+
+	/// <summary>
+	/// Game object on which to call the callback function.
+	/// </summary>
 
 	public GameObject eventReceiver;
 
+	/// <summary>
+	/// Function to call when the spring finishes moving.
+	/// </summary>
+
 	public string callWhenFinished;
+
+	/// <summary>
+	/// Delegate to trigger when the spring finishes.
+	/// </summary>
 
 	public OnFinished onFinished;
 
-	private Transform mTrans;
+	Transform mTrans;
+	float mThreshold = 0f;
 
-	private float mThreshold;
+	/// <summary>
+	/// Cache the transform.
+	/// </summary>
 
-	private void Start()
+	void Start () { mTrans = transform; }
+
+	/// <summary>
+	/// Advance toward the target position.
+	/// </summary>
+
+	void Update ()
 	{
-		mTrans = base.transform;
-	}
+		float delta = ignoreTimeScale ? UpdateRealTimeDelta() : Time.deltaTime;
 
-	private void Update()
-	{
-		float deltaTime = ((!ignoreTimeScale) ? Time.deltaTime : UpdateRealTimeDelta());
 		if (worldSpace)
 		{
-			if (mThreshold == 0f)
-			{
-				mThreshold = (target - mTrans.position).magnitude * 0.001f;
-			}
-			mTrans.position = NGUIMath.SpringLerp(mTrans.position, target, strength, deltaTime);
+			if (mThreshold == 0f) mThreshold = (target - mTrans.position).magnitude * 0.001f;
+			mTrans.position = NGUIMath.SpringLerp(mTrans.position, target, strength, delta);
+
 			if (mThreshold >= (target - mTrans.position).magnitude)
 			{
 				mTrans.position = target;
-				if (onFinished != null)
-				{
-					onFinished(this);
-				}
+				
+				if (onFinished != null) onFinished(this);
+				
 				if (eventReceiver != null && !string.IsNullOrEmpty(callWhenFinished))
 				{
 					eventReceiver.SendMessage(callWhenFinished, this, SendMessageOptions.DontRequireReceiver);
 				}
-				base.enabled = false;
+				enabled = false;
 			}
-			return;
 		}
-		if (mThreshold == 0f)
+		else
 		{
-			mThreshold = (target - mTrans.localPosition).magnitude * 0.001f;
-		}
-		mTrans.localPosition = NGUIMath.SpringLerp(mTrans.localPosition, target, strength, deltaTime);
-		if (mThreshold >= (target - mTrans.localPosition).magnitude)
-		{
-			mTrans.localPosition = target;
-			if (onFinished != null)
+			if (mThreshold == 0f) mThreshold = (target - mTrans.localPosition).magnitude * 0.001f;
+			mTrans.localPosition = NGUIMath.SpringLerp(mTrans.localPosition, target, strength, delta);
+
+			if (mThreshold >= (target - mTrans.localPosition).magnitude)
 			{
-				onFinished(this);
+				mTrans.localPosition = target;
+				
+				if (onFinished != null) onFinished(this);
+
+				if (eventReceiver != null && !string.IsNullOrEmpty(callWhenFinished))
+				{
+					eventReceiver.SendMessage(callWhenFinished, this, SendMessageOptions.DontRequireReceiver);
+				}
+				enabled = false;
 			}
-			if (eventReceiver != null && !string.IsNullOrEmpty(callWhenFinished))
-			{
-				eventReceiver.SendMessage(callWhenFinished, this, SendMessageOptions.DontRequireReceiver);
-			}
-			base.enabled = false;
 		}
 	}
 
-	public static SpringPosition Begin(GameObject go, Vector3 pos, float strength)
+	/// <summary>
+	/// Start the tweening process.
+	/// </summary>
+
+	static public SpringPosition Begin (GameObject go, Vector3 pos, float strength)
 	{
-		SpringPosition springPosition = go.GetComponent<SpringPosition>();
-		if (springPosition == null)
+		SpringPosition sp = go.GetComponent<SpringPosition>();
+		if (sp == null) sp = go.AddComponent<SpringPosition>();
+		sp.target = pos;
+		sp.strength = strength;
+		sp.onFinished = null;
+
+		if (!sp.enabled)
 		{
-			springPosition = go.AddComponent<SpringPosition>();
+			sp.mThreshold = 0f;
+			sp.enabled = true;
 		}
-		springPosition.target = pos;
-		springPosition.strength = strength;
-		springPosition.onFinished = null;
-		if (!springPosition.enabled)
-		{
-			springPosition.mThreshold = 0f;
-			springPosition.enabled = true;
-		}
-		return springPosition;
+		return sp;
 	}
 }

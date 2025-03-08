@@ -1,38 +1,42 @@
-using System;
+﻿//----------------------------------------------
+//            NGUI: Next-Gen UI kit
+// Copyright © 2011-2013 Tasharen Entertainment
+//----------------------------------------------
+
 using UnityEngine;
+
+/// <summary>
+/// Example script showing how to activate or deactivate a MonoBehaviour when OnActivate event is received.
+/// OnActivate event is sent out by the UICheckbox script.
+/// </summary>
 
 [AddComponentMenu("NGUI/Interaction/Checkbox Controlled Component")]
 public class UICheckboxControlledComponent : MonoBehaviour
 {
 	public MonoBehaviour target;
+	public bool inverse = false;
 
-	public bool inverse;
+	bool mUsingDelegates = false;
 
-	private bool mUsingDelegates;
-
-	private void Start()
+	void Start ()
 	{
-		UICheckbox component = GetComponent<UICheckbox>();
-		if (component != null)
+		UICheckbox chk = GetComponent<UICheckbox>();
+
+		if (chk != null)
 		{
 			mUsingDelegates = true;
-			component.onStateChange = (UICheckbox.OnStateChange)Delegate.Combine(component.onStateChange, new UICheckbox.OnStateChange(OnActivateDelegate));
+			chk.onStateChange += OnActivateDelegate;
 		}
 	}
 
-	private void OnActivateDelegate(bool isActive)
+	void OnActivateDelegate (bool isActive)
 	{
-		if (base.enabled && target != null)
-		{
-			target.enabled = ((!inverse) ? isActive : (!isActive));
-		}
+		if (enabled && target != null) target.enabled = inverse ? !isActive : isActive;
 	}
 
-	private void OnActivate(bool isActive)
-	{
-		if (!mUsingDelegates)
-		{
-			OnActivateDelegate(isActive);
-		}
-	}
+	/// <summary>
+	/// Legacy functionality -- keeping it for backwards compatibility.
+	/// </summary>
+
+	void OnActivate (bool isActive) { if (!mUsingDelegates) OnActivateDelegate(isActive); }
 }

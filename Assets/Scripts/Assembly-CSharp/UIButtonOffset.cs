@@ -1,81 +1,68 @@
+//----------------------------------------------
+//            NGUI: Next-Gen UI kit
+// Copyright © 2011-2013 Tasharen Entertainment
+//----------------------------------------------
+
 using UnityEngine;
+
+/// <summary>
+/// Simple example script of how a button can be offset visibly when the mouse hovers over it or it gets pressed.
+/// </summary>
 
 [AddComponentMenu("NGUI/Interaction/Button Offset")]
 public class UIButtonOffset : MonoBehaviour
 {
 	public Transform tweenTarget;
-
 	public Vector3 hover = Vector3.zero;
-
 	public Vector3 pressed = new Vector3(2f, -2f);
-
 	public float duration = 0.2f;
 
-	private Vector3 mPos;
+	Vector3 mPos;
+	bool mStarted = false;
+	bool mHighlighted = false;
 
-	private bool mInitDone;
-
-	private bool mStarted;
-
-	private bool mHighlighted;
-
-	private void Start()
+	void Start ()
 	{
-		mStarted = true;
-	}
-
-	private void OnEnable()
-	{
-		if (mStarted && mHighlighted)
+		if (!mStarted)
 		{
-			OnHover(UICamera.IsHighlighted(base.gameObject));
+			mStarted = true;
+			if (tweenTarget == null) tweenTarget = transform;
+			mPos = tweenTarget.localPosition;
 		}
 	}
 
-	private void OnDisable()
+	void OnEnable () { if (mStarted && mHighlighted) OnHover(UICamera.IsHighlighted(gameObject)); }
+
+	void OnDisable ()
 	{
-		if (tweenTarget != null)
+		if (mStarted && tweenTarget != null)
 		{
-			TweenPosition component = tweenTarget.GetComponent<TweenPosition>();
-			if (component != null)
+			TweenPosition tc = tweenTarget.GetComponent<TweenPosition>();
+
+			if (tc != null)
 			{
-				component.position = mPos;
-				component.enabled = false;
+				tc.position = mPos;
+				tc.enabled = false;
 			}
 		}
 	}
 
-	private void Init()
+	void OnPress (bool isPressed)
 	{
-		mInitDone = true;
-		if (tweenTarget == null)
+		if (enabled)
 		{
-			tweenTarget = base.transform;
-		}
-		mPos = tweenTarget.localPosition;
-	}
-
-	private void OnPress(bool isPressed)
-	{
-		if (base.enabled)
-		{
-			if (!mInitDone)
-			{
-				Init();
-			}
-			TweenPosition.Begin(tweenTarget.gameObject, duration, isPressed ? (mPos + pressed) : ((!UICamera.IsHighlighted(base.gameObject)) ? mPos : (mPos + hover))).method = UITweener.Method.EaseInOut;
+			if (!mStarted) Start();
+			TweenPosition.Begin(tweenTarget.gameObject, duration, isPressed ? mPos + pressed :
+				(UICamera.IsHighlighted(gameObject) ? mPos + hover : mPos)).method = UITweener.Method.EaseInOut;
 		}
 	}
 
-	private void OnHover(bool isOver)
+	void OnHover (bool isOver)
 	{
-		if (base.enabled)
+		if (enabled)
 		{
-			if (!mInitDone)
-			{
-				Init();
-			}
-			TweenPosition.Begin(tweenTarget.gameObject, duration, (!isOver) ? mPos : (mPos + hover)).method = UITweener.Method.EaseInOut;
+			if (!mStarted) Start();
+			TweenPosition.Begin(tweenTarget.gameObject, duration, isOver ? mPos + hover : mPos).method = UITweener.Method.EaseInOut;
 			mHighlighted = isOver;
 		}
 	}

@@ -1,70 +1,81 @@
+//----------------------------------------------
+//            NGUI: Next-Gen UI kit
+// Copyright © 2011-2013 Tasharen Entertainment
+//----------------------------------------------
+
 using UnityEngine;
+
+/// <summary>
+/// Similar to UIButtonColor, but adds a 'disabled' state based on whether the collider is enabled or not.
+/// </summary>
 
 [AddComponentMenu("NGUI/Interaction/Button")]
 public class UIButton : UIButtonColor
 {
+	/// <summary>
+	/// Color that will be applied when the button is disabled.
+	/// </summary>
+
 	public Color disabledColor = Color.grey;
+
+	/// <summary>
+	/// If the collider is disabled, assume the disabled color.
+	/// </summary>
+
+	protected override void OnEnable ()
+	{
+		if (isEnabled) base.OnEnable();
+		else UpdateColor(false, true);
+	}
+
+	public override void OnHover (bool isOver) { if (isEnabled) base.OnHover(isOver); }
+	public override void OnPress (bool isPressed) { if (isEnabled) base.OnPress(isPressed); }
+
+	/// <summary>
+	/// Whether the button should be enabled.
+	/// </summary>
 
 	public bool isEnabled
 	{
 		get
 		{
-			Collider collider = base.GetComponent<Collider>();
-			return (bool)collider && collider.enabled;
+			Collider col = GetComponent<Collider>();
+			return col && col.enabled;
 		}
 		set
 		{
-			Collider collider = base.GetComponent<Collider>();
-			if ((bool)collider && collider.enabled != value)
+			Collider col = GetComponent<Collider>();
+			if (!col) return;
+
+			if (col.enabled != value)
 			{
-				collider.enabled = value;
+				col.enabled = value;
 				UpdateColor(value, false);
 			}
 		}
 	}
 
-	protected override void OnEnable()
-	{
-		if (isEnabled)
-		{
-			base.OnEnable();
-		}
-		else
-		{
-			UpdateColor(false, true);
-		}
-	}
+	/// <summary>
+	/// Update the button's color to either enabled or disabled state.
+	/// </summary>
 
-	protected override void OnHover(bool isOver)
+	public void UpdateColor (bool shouldBeEnabled, bool immediate)
 	{
-		if (isEnabled)
+		if (tweenTarget)
 		{
-			base.OnHover(isOver);
-		}
-	}
+			if (!mStarted)
+			{
+				mStarted = true;
+				Init();
+			}
 
-	protected override void OnPress(bool isPressed)
-	{
-		if (isEnabled)
-		{
-			base.OnPress(isPressed);
-		}
-	}
+			Color c = shouldBeEnabled ? defaultColor : disabledColor;
+			TweenColor tc = TweenColor.Begin(tweenTarget, 0.15f, c);
 
-	public void UpdateColor(bool shouldBeEnabled, bool immediate)
-	{
-		if (!mInitDone)
-		{
-			Init();
-		}
-		if ((bool)tweenTarget)
-		{
-			Color color = ((!shouldBeEnabled) ? disabledColor : base.defaultColor);
-			TweenColor tweenColor = TweenColor.Begin(tweenTarget, 0.15f, color);
 			if (immediate)
 			{
-				tweenColor.color = color;
-				tweenColor.enabled = false;
+				tc.color = c;
+				tc.enabled = false;
 			}
 		}
 	}

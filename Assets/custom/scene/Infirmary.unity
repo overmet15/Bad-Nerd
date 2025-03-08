@@ -6712,14 +6712,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Main Hall
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -6727,6 +6726,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &407
@@ -6756,14 +6757,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Auditorium
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -6771,6 +6771,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &409
@@ -6784,14 +6786,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Play Room
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -6799,6 +6800,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &410
@@ -6812,14 +6815,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Gym
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -6827,6 +6829,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &411
@@ -6877,14 +6881,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Main Hall
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -6892,6 +6895,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &414
@@ -6905,14 +6910,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Infirmary
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -6920,6 +6924,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &415
@@ -6933,14 +6939,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Grand Library
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -6948,6 +6953,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &416
@@ -6961,14 +6968,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Cafeteria
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -6976,6 +6982,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &417
@@ -7002,14 +7010,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Bright Hall
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -7017,6 +7024,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &419
@@ -7046,14 +7055,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: New Label
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -7061,6 +7069,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &421
@@ -7074,14 +7084,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Playground
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -7089,6 +7098,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &422
@@ -7102,8 +7113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
@@ -7112,6 +7121,7 @@ MonoBehaviour:
 
     Arena'
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -7119,6 +7129,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &423
@@ -7132,14 +7144,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Bright Hall
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -7147,6 +7158,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &424
@@ -7160,14 +7173,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Washroom
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -7175,6 +7187,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &425
@@ -7188,14 +7202,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848282c0978acd885155e93949b74925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 2100000, guid: c2f909096eed79f4391fc71a9d18f779, type: 2}
-  mTex: {fileID: 0}
   mColor: {r: 1, g: 1, b: 1, a: 0.43137255}
   mPivot: 4
   mDepth: 0
   mFont: {fileID: 114728546209673217, guid: 296445825f5a03f4f8c7289f063511a4, type: 2}
   mText: Art Gallery
   mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -7203,6 +7216,8 @@ MonoBehaviour:
   mEffectStyle: 0
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &426
@@ -7216,10 +7231,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7c3bff608434c7f74859fbc7af5fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortByDepth: 0
   showInPanelTool: 1
   generateNormals: 0
   depthPass: 0
   widgetsAreStatic: 0
+  cullWhileDragging: 0
+  worldToLocal:
+    e00: -0.0000006568675
+    e01: -0.00000025544847
+    e02: 0.10204081
+    e03: -2.99998
+    e10: -4.660777
+    e11: -0.0000011112159
+    e12: -0.000029863926
+    e13: 384.57224
+    e20: 0.000000011771629
+    e21: -0.09874758
+    e22: -0.00000025897583
+    e23: 0.5248177
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  mAlpha: 1
   mDebugInfo: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 0, w: 0}
@@ -7235,10 +7270,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7c3bff608434c7f74859fbc7af5fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortByDepth: 0
   showInPanelTool: 1
   generateNormals: 0
   depthPass: 0
   widgetsAreStatic: 0
+  cullWhileDragging: 0
+  worldToLocal:
+    e00: -0.80307454
+    e01: 0.0000000107864295
+    e02: -0.0000035431522
+    e03: 158.98854
+    e10: -0.000003543152
+    e11: 0.0000013881422
+    e12: 0.8030745
+    e13: 11.103615
+    e20: 0.000000010792455
+    e21: 0.8030745
+    e22: -0.0000013402753
+    e23: 0.6810535
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  mAlpha: 1
   mDebugInfo: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 0, w: 0}
@@ -7254,179 +7309,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7c3bff608434c7f74859fbc7af5fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortByDepth: 0
   showInPanelTool: 1
   generateNormals: 0
   depthPass: 0
   widgetsAreStatic: 0
+  cullWhileDragging: 0
+  worldToLocal:
+    e00: -0.80307454
+    e01: 0.0000000107864295
+    e02: -0.0000035431522
+    e03: 158.98854
+    e10: -0.000003543152
+    e11: 0.0000013881422
+    e12: 0.8030745
+    e13: 11.103615
+    e20: 0.000000010792455
+    e21: 0.8030745
+    e22: -0.0000013402753
+    e23: 0.6810535
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  mAlpha: 1
   mDebugInfo: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 0, w: 0}
   mClipSoftness: {x: 40, y: 40}
---- !u!1 &449458936
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 449458937}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &449458937
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 449458936}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &568589336
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 568589337}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &568589337
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 568589336}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1583006694
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1583006695}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1583006695
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1583006694}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 21
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1647899678
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1647899679}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1647899679
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1647899678}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1718610989
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1718610990}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1718610990
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1718610989}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 19
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1794461260
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1794461261}
-  m_Layer: 0
-  m_Name: _UIDrawCall [SciFi Atlas]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1794461261
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1794461260}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

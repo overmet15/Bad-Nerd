@@ -1,48 +1,45 @@
+﻿//----------------------------------------------
+//            NGUI: Next-Gen UI kit
+// Copyright © 2011-2013 Tasharen Entertainment
+//----------------------------------------------
+
 using UnityEngine;
+
+/// <summary>
+/// Tween the object's rotation.
+/// </summary>
 
 [AddComponentMenu("NGUI/Tween/Rotation")]
 public class TweenRotation : UITweener
 {
 	public Vector3 from;
-
 	public Vector3 to;
 
-	private Transform mTrans;
+	Transform mTrans;
 
-	public Transform cachedTransform
-	{
-		get
-		{
-			if (mTrans == null)
-			{
-				mTrans = base.transform;
-			}
-			return mTrans;
-		}
-	}
+	public Transform cachedTransform { get { if (mTrans == null) mTrans = transform; return mTrans; } }
+	public Quaternion rotation { get { return cachedTransform.localRotation; } set { cachedTransform.localRotation = value; } }
 
-	public Quaternion rotation
-	{
-		get
-		{
-			return cachedTransform.localRotation;
-		}
-		set
-		{
-			cachedTransform.localRotation = value;
-		}
-	}
-
-	protected override void OnUpdate(float factor, bool isFinished)
+	protected override void OnUpdate (float factor, bool isFinished)
 	{
 		cachedTransform.localRotation = Quaternion.Slerp(Quaternion.Euler(from), Quaternion.Euler(to), factor);
 	}
 
-	public static TweenRotation Begin(GameObject go, float duration, Quaternion rot)
+	/// <summary>
+	/// Start the tweening operation.
+	/// </summary>
+
+	static public TweenRotation Begin (GameObject go, float duration, Quaternion rot)
 	{
-		TweenRotation tweenRotation = UITweener.Begin<TweenRotation>(go, duration);
-		tweenRotation.from = tweenRotation.rotation.eulerAngles;
-		tweenRotation.to = rot.eulerAngles;
-		return tweenRotation;
+		TweenRotation comp = UITweener.Begin<TweenRotation>(go, duration);
+		comp.from = comp.rotation.eulerAngles;
+		comp.to = rot.eulerAngles;
+
+		if (duration <= 0f)
+		{
+			comp.Sample(1f, true);
+			comp.enabled = false;
+		}
+		return comp;
 	}
 }

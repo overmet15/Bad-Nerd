@@ -1,16 +1,30 @@
+//----------------------------------------------
+//            NGUI: Next-Gen UI kit
+// Copyright © 2011-2013 Tasharen Entertainment
+//----------------------------------------------
+
+using UnityEngine;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
+using System.IO;
+using System.Reflection;
 
-public static class NGUITools
+/// <summary>
+/// Helper class containing generic functions used throughout the UI library.
+/// </summary>
+
+static public class NGUITools
 {
-	private static AudioListener mListener;
+	static AudioListener mListener;
 
-	private static bool mLoaded;
+	static bool mLoaded = false;
+	static float mGlobalVolume = 1f;
 
-	private static float mGlobalVolume = 1f;
+	/// <summary>
+	/// Globally accessible volume affecting all sounds played via NGUITools.PlaySound().
+	/// </summary>
 
-	public static float soundVolume
+	static public float soundVolume
 	{
 		get
 		{
@@ -32,415 +46,566 @@ public static class NGUITools
 		}
 	}
 
-	public static bool fileAccess
+	/// <summary>
+	/// Helper function -- whether the disk access is allowed.
+	/// </summary>
+
+	static public bool fileAccess
 	{
 		get
 		{
-			return Application.platform != RuntimePlatform.WebGLPlayer;
+			return true;
 		}
 	}
 
-	public static AudioSource PlaySound(AudioClip clip)
-	{
-		return PlaySound(clip, 1f, 1f);
-	}
+	/// <summary>
+	/// Play the specified audio clip.
+	/// </summary>
 
-	public static AudioSource PlaySound(AudioClip clip, float volume)
-	{
-		return PlaySound(clip, volume, 1f);
-	}
+	static public AudioSource PlaySound (AudioClip clip) { return PlaySound(clip, 1f, 1f); }
 
-	public static AudioSource PlaySound(AudioClip clip, float volume, float pitch)
+	/// <summary>
+	/// Play the specified audio clip with the specified volume.
+	/// </summary>
+
+	static public AudioSource PlaySound (AudioClip clip, float volume) { return PlaySound(clip, volume, 1f); }
+
+	/// <summary>
+	/// Play the specified audio clip with the specified volume and pitch.
+	/// </summary>
+
+	static public AudioSource PlaySound (AudioClip clip, float volume, float pitch)
 	{
 		volume *= soundVolume;
+
 		if (clip != null && volume > 0.01f)
 		{
 			if (mListener == null)
 			{
-				mListener = UnityEngine.Object.FindObjectOfType(typeof(AudioListener)) as AudioListener;
+				mListener = GameObject.FindObjectOfType(typeof(AudioListener)) as AudioListener;
+
 				if (mListener == null)
 				{
-					Camera camera = Camera.main;
-					if (camera == null)
-					{
-						camera = UnityEngine.Object.FindObjectOfType(typeof(Camera)) as Camera;
-					}
-					if (camera != null)
-					{
-						mListener = camera.gameObject.AddComponent<AudioListener>();
-					}
+					Camera cam = Camera.main;
+					if (cam == null) cam = GameObject.FindObjectOfType(typeof(Camera)) as Camera;
+					if (cam != null) mListener = cam.gameObject.AddComponent<AudioListener>();
 				}
 			}
-			if (mListener != null)
+
+			if (mListener != null && mListener.enabled && NGUITools.GetActive(mListener.gameObject))
 			{
-				AudioSource audioSource = mListener.GetComponent<AudioSource>();
-				if (audioSource == null)
-				{
-					audioSource = mListener.gameObject.AddComponent<AudioSource>();
-				}
-				audioSource.pitch = pitch;
-				audioSource.priority = 255;
-				audioSource.PlayOneShot(clip, volume);
-				return audioSource;
+				AudioSource source = mListener.GetComponent<AudioSource>();
+				if (source == null) source = mListener.gameObject.AddComponent<AudioSource>();
+				source.pitch = pitch;
+				source.PlayOneShot(clip, volume);
+				return source;
 			}
 		}
 		return null;
 	}
 
-	public static WWW OpenURL(string url)
+	/// <summary>
+	/// New WWW call can fail if the crossdomain policy doesn't check out. Exceptions suck. It's much more elegant to check for null instead.
+	/// </summary>
+
+	static public WWW OpenURL (string url)
 	{
-		WWW result = null;
-		try
-		{
-			result = new WWW(url);
-		}
-		catch (Exception ex)
-		{
-			Debug.LogError(ex.Message);
-		}
-		return result;
+#if UNITY_FLASH
+		Debug.LogError("WWW is not yet implemented in Flash");
+		return null;
+#else
+		WWW www = null;
+		try { www = new WWW(url); }
+		catch (System.Exception ex) { Debug.LogError(ex.Message); }
+		return www;
+#endif
 	}
 
-	public static int RandomRange(int min, int max)
+	/// <summary>
+	/// New WWW call can fail if the crossdomain policy doesn't check out. Exceptions suck. It's much more elegant to check for null instead.
+	/// </summary>
+
+	static public WWW OpenURL (string url, WWWForm form)
 	{
-		if (min == max)
-		{
-			return min;
-		}
+		if (form == null) return OpenURL(url);
+#if UNITY_FLASH
+		Debug.LogError("WWW is not yet implemented in Flash");
+		return null;
+#else
+		WWW www = null;
+		try { www = new WWW(url, form); }
+		catch (System.Exception ex) { Debug.LogError(ex != null ? ex.Message : "<null>"); }
+		return www;
+#endif
+	}
+
+	/// <summary>
+	/// Same as Random.Range, but the returned value is between min and max, inclusive.
+	/// Unity's Random.Range is less than max instead, unless min == max.
+	/// This means Range(0,1) produces 0 instead of 0 or 1. That's unacceptable.
+	/// </summary>
+
+	static public int RandomRange (int min, int max)
+	{
+		if (min == max) return min;
 		return UnityEngine.Random.Range(min, max + 1);
 	}
 
-	public static string GetHierarchy(GameObject obj)
+	/// <summary>
+	/// Returns the hierarchy of the object in a human-readable format.
+	/// </summary>
+
+	static public string GetHierarchy (GameObject obj)
 	{
-		string text = obj.name;
+		string path = obj.name;
+
 		while (obj.transform.parent != null)
 		{
 			obj = obj.transform.parent.gameObject;
-			text = obj.name + "/" + text;
+			path = obj.name + "/" + path;
 		}
-		return "\"" + text + "\"";
+		return "\"" + path + "\"";
 	}
 
-	public static Color ParseColor(string text, int offset)
+	/// <summary>
+	/// Parse a RrGgBb color encoded in the string.
+	/// </summary>
+
+	static public Color ParseColor (string text, int offset)
 	{
-		int num = (NGUIMath.HexToDecimal(text[offset]) << 4) | NGUIMath.HexToDecimal(text[offset + 1]);
-		int num2 = (NGUIMath.HexToDecimal(text[offset + 2]) << 4) | NGUIMath.HexToDecimal(text[offset + 3]);
-		int num3 = (NGUIMath.HexToDecimal(text[offset + 4]) << 4) | NGUIMath.HexToDecimal(text[offset + 5]);
-		float num4 = 0.003921569f;
-		return new Color(num4 * (float)num, num4 * (float)num2, num4 * (float)num3);
+		int r = (NGUIMath.HexToDecimal(text[offset])	 << 4) | NGUIMath.HexToDecimal(text[offset + 1]);
+		int g = (NGUIMath.HexToDecimal(text[offset + 2]) << 4) | NGUIMath.HexToDecimal(text[offset + 3]);
+		int b = (NGUIMath.HexToDecimal(text[offset + 4]) << 4) | NGUIMath.HexToDecimal(text[offset + 5]);
+		float f = 1f / 255f;
+		return new Color(f * r, f * g, f * b);
 	}
 
-	public static string EncodeColor(Color c)
+	/// <summary>
+	/// The reverse of ParseColor -- encodes a color in RrGgBb format.
+	/// </summary>
+
+	static public string EncodeColor (Color c)
 	{
-		return (0xFFFFFF & (NGUIMath.ColorToInt(c) >> 8)).ToString("X6");
+		int i = 0xFFFFFF & (NGUIMath.ColorToInt(c) >> 8);
+		return NGUIMath.DecimalToHex(i);
 	}
 
-	public static int ParseSymbol(string text, int index, List<Color> colors)
+	static Color mInvisible = new Color(0f, 0f, 0f, 0f);
+
+	/// <summary>
+	/// Parse an embedded symbol, such as [FFAA00] (set color) or [-] (undo color change)
+	/// </summary>
+
+	static public int ParseSymbol (string text, int index, List<Color> colors, bool premultiply)
 	{
 		int length = text.Length;
+
 		if (index + 2 < length)
 		{
 			if (text[index + 1] == '-')
 			{
 				if (text[index + 2] == ']')
 				{
-					if (colors != null && colors.Count > 1)
-					{
-						colors.RemoveAt(colors.Count - 1);
-					}
+					if (colors != null && colors.Count > 1) colors.RemoveAt(colors.Count - 1);
 					return 3;
 				}
 			}
-			else if (index + 7 < length && text[index + 7] == ']')
+			else if (index + 7 < length)
 			{
-				if (colors != null)
+				if (text[index + 7] == ']')
 				{
-					Color color = ParseColor(text, index + 1);
-					if (EncodeColor(color) != text.Substring(index + 1, 6).ToUpper())
+					if (colors != null)
 					{
-						return 0;
+						Color c = ParseColor(text, index + 1);
+
+						if (EncodeColor(c) != text.Substring(index + 1, 6).ToUpper())
+							return 0;
+
+						c.a = colors[colors.Count - 1].a;
+						if (premultiply && c.a != 1f)
+							c = Color.Lerp(mInvisible, c, c.a);
+
+						colors.Add(c);
 					}
-					color.a = colors[colors.Count - 1].a;
-					colors.Add(color);
+					return 8;
 				}
-				return 8;
 			}
 		}
 		return 0;
 	}
 
-	public static string StripSymbols(string text)
+	/// <summary>
+	/// Runs through the specified string and removes all color-encoding symbols.
+	/// </summary>
+
+	static public string StripSymbols (string text)
 	{
 		if (text != null)
 		{
-			text = text.Replace("\\n", "\n");
-			int num = 0;
-			int length = text.Length;
-			while (num < length)
+			for (int i = 0, imax = text.Length; i < imax; )
 			{
-				char c = text[num];
+				char c = text[i];
+
 				if (c == '[')
 				{
-					int num2 = ParseSymbol(text, num, null);
-					if (num2 > 0)
+					int retVal = ParseSymbol(text, i, null, false);
+
+					if (retVal > 0)
 					{
-						text = text.Remove(num, num2);
-						length = text.Length;
+						text = text.Remove(i, retVal);
+						imax = text.Length;
 						continue;
 					}
 				}
-				num++;
+				++i;
 			}
 		}
 		return text;
 	}
 
-	public static T[] FindActive<T>() where T : Component
+	/// <summary>
+	/// Find all active objects of specified type.
+	/// </summary>
+
+	static public T[] FindActive<T> () where T : Component
 	{
-		return UnityEngine.Object.FindSceneObjectsOfType(typeof(T)) as T[];
+#if UNITY_3_5 || UNITY_4_0
+		return GameObject.FindSceneObjectsOfType(typeof(T)) as T[];
+#else
+		return GameObject.FindObjectsOfType(typeof(T)) as T[];
+#endif
 	}
 
-	public static Camera FindCameraForLayer(int layer)
+	/// <summary>
+	/// Find the camera responsible for drawing the objects on the specified layer.
+	/// </summary>
+
+	static public Camera FindCameraForLayer (int layer)
 	{
-		int num = 1 << layer;
-		Camera[] array = FindActive<Camera>();
-		int i = 0;
-		for (int num2 = array.Length; i < num2; i++)
+		int layerMask = 1 << layer;
+
+		Camera[] cameras = NGUITools.FindActive<Camera>();
+
+		for (int i = 0, imax = cameras.Length; i < imax; ++i)
 		{
-			Camera camera = array[i];
-			if ((camera.cullingMask & num) != 0)
+			Camera cam = cameras[i];
+
+			if ((cam.cullingMask & layerMask) != 0)
 			{
-				return camera;
+				return cam;
 			}
 		}
 		return null;
 	}
 
-	public static BoxCollider AddWidgetCollider(GameObject go)
+	/// <summary>
+	/// Add a collider to the game object containing one or more widgets.
+	/// </summary>
+
+	static public BoxCollider AddWidgetCollider (GameObject go)
 	{
 		if (go != null)
 		{
-			Collider component = go.GetComponent<Collider>();
-			BoxCollider boxCollider = component as BoxCollider;
-			if (boxCollider == null)
+			Collider col = go.GetComponent<Collider>();
+			BoxCollider box = col as BoxCollider;
+
+			if (box == null)
 			{
-				if (component != null)
+				if (col != null)
 				{
-					if (Application.isPlaying)
-					{
-						UnityEngine.Object.Destroy(component);
-					}
-					else
-					{
-						UnityEngine.Object.DestroyImmediate(component);
-					}
+					if (Application.isPlaying) GameObject.Destroy(col);
+					else GameObject.DestroyImmediate(col);
 				}
-				boxCollider = go.AddComponent<BoxCollider>();
+				box = go.AddComponent<BoxCollider>();
 			}
-			int num = CalculateNextDepth(go);
-			Bounds bounds = NGUIMath.CalculateRelativeWidgetBounds(go.transform);
-			boxCollider.isTrigger = true;
-			boxCollider.center = bounds.center + Vector3.back * ((float)num * 0.25f);
-			boxCollider.size = new Vector3(bounds.size.x, bounds.size.y, 0f);
-			return boxCollider;
+
+			int depth = NGUITools.CalculateNextDepth(go);
+
+			Bounds b = NGUIMath.CalculateRelativeWidgetBounds(go.transform);
+			box.isTrigger = true;
+			box.center = b.center + Vector3.back * (depth * 0.25f);
+			box.size = new Vector3(b.size.x, b.size.y, 0f);
+			return box;
 		}
 		return null;
 	}
 
-	public static string GetName<T>() where T : Component
+	/// <summary>
+	/// Helper function that returns the string name of the type.
+	/// </summary>
+
+	static public string GetName<T> () where T : Component
 	{
-		string text = typeof(T).ToString();
-		if (text.StartsWith("UI"))
-		{
-			text = text.Substring(2);
-		}
-		else if (text.StartsWith("UnityEngine."))
-		{
-			text = text.Substring(12);
-		}
-		return text;
+		string s = typeof(T).ToString();
+		if (s.StartsWith("UI")) s = s.Substring(2);
+		else if (s.StartsWith("UnityEngine.")) s = s.Substring(12);
+		return s;
 	}
 
-	public static GameObject AddChild(GameObject parent)
+	/// <summary>
+	/// Add a new child game object.
+	/// </summary>
+
+	static public GameObject AddChild (GameObject parent)
 	{
-		GameObject gameObject = new GameObject();
+		GameObject go = new GameObject();
+
 		if (parent != null)
 		{
-			Transform transform = gameObject.transform;
-			transform.parent = parent.transform;
-			transform.localPosition = Vector3.zero;
-			transform.localRotation = Quaternion.identity;
-			transform.localScale = Vector3.one;
-			gameObject.layer = parent.layer;
+			Transform t = go.transform;
+			t.parent = parent.transform;
+			t.localPosition = Vector3.zero;
+			t.localRotation = Quaternion.identity;
+			t.localScale = Vector3.one;
+			go.layer = parent.layer;
 		}
-		return gameObject;
+		return go;
 	}
 
-	public static GameObject AddChild(GameObject parent, GameObject prefab)
+	/// <summary>
+	/// Instantiate an object and add it to the specified parent.
+	/// </summary>
+
+	static public GameObject AddChild (GameObject parent, GameObject prefab)
 	{
-		GameObject gameObject = UnityEngine.Object.Instantiate(prefab) as GameObject;
-		if (gameObject != null && parent != null)
+		GameObject go = GameObject.Instantiate(prefab) as GameObject;
+
+		if (go != null && parent != null)
 		{
-			Transform transform = gameObject.transform;
-			transform.parent = parent.transform;
-			transform.localPosition = Vector3.zero;
-			transform.localRotation = Quaternion.identity;
-			transform.localScale = Vector3.one;
-			gameObject.layer = parent.layer;
+			Transform t = go.transform;
+			t.parent = parent.transform;
+			t.localPosition = Vector3.zero;
+			t.localRotation = Quaternion.identity;
+			t.localScale = Vector3.one;
+			go.layer = parent.layer;
 		}
-		return gameObject;
+		return go;
 	}
 
-	public static int CalculateNextDepth(GameObject go)
+	/// <summary>
+	/// Gathers all widgets and calculates the depth for the next widget.
+	/// </summary>
+
+	static public int CalculateNextDepth (GameObject go)
 	{
-		int num = -1;
-		UIWidget[] componentsInChildren = go.GetComponentsInChildren<UIWidget>();
-		int i = 0;
-		for (int num2 = componentsInChildren.Length; i < num2; i++)
-		{
-			num = Mathf.Max(num, componentsInChildren[i].depth);
-		}
-		return num + 1;
+		int depth = -1;
+		UIWidget[] widgets = go.GetComponentsInChildren<UIWidget>();
+		for (int i = 0, imax = widgets.Length; i < imax; ++i) depth = Mathf.Max(depth, widgets[i].depth);
+		return depth + 1;
 	}
 
-	public static T AddChild<T>(GameObject parent) where T : Component
+	/// <summary>
+	/// Add a child object to the specified parent and attaches the specified script to it.
+	/// </summary>
+
+	static public T AddChild<T> (GameObject parent) where T : Component
 	{
-		GameObject gameObject = AddChild(parent);
-		gameObject.name = GetName<T>();
-		return gameObject.AddComponent<T>();
+		GameObject go = AddChild(parent);
+		go.name = GetName<T>();
+		return go.AddComponent<T>();
 	}
 
-	public static T AddWidget<T>(GameObject go) where T : UIWidget
+	/// <summary>
+	/// Add a new widget of specified type.
+	/// </summary>
+
+	static public T AddWidget<T> (GameObject go) where T : UIWidget
 	{
 		int depth = CalculateNextDepth(go);
-		T result = AddChild<T>(go);
-		result.depth = depth;
-		Transform transform = result.transform;
-		transform.localPosition = Vector3.zero;
-		transform.localRotation = Quaternion.identity;
-		transform.localScale = new Vector3(100f, 100f, 1f);
-		result.gameObject.layer = go.layer;
-		return result;
+
+		// Create the widget and place it above other widgets
+		T widget = AddChild<T>(go);
+		widget.depth = depth;
+
+		// Clear the local transform
+		Transform t = widget.transform;
+		t.localPosition = Vector3.zero;
+		t.localRotation = Quaternion.identity;
+		t.localScale = new Vector3(100f, 100f, 1f);
+		widget.gameObject.layer = go.layer;
+		return widget;
 	}
 
-	public static UISprite AddSprite(GameObject go, UIAtlas atlas, string spriteName)
+	/// <summary>
+	/// Add a sprite appropriate for the specified atlas sprite.
+	/// It will be sliced if the sprite has an inner rect, and a regular sprite otherwise.
+	/// </summary>
+
+	static public UISprite AddSprite (GameObject go, UIAtlas atlas, string spriteName)
 	{
-		UIAtlas.Sprite sprite = ((!(atlas != null)) ? null : atlas.GetSprite(spriteName));
-		UISprite uISprite = ((sprite != null && !(sprite.inner == sprite.outer)) ? AddWidget<UISlicedSprite>(go) : AddWidget<UISprite>(go));
-		uISprite.atlas = atlas;
-		uISprite.spriteName = spriteName;
-		return uISprite;
+		UIAtlas.Sprite sp = (atlas != null) ? atlas.GetSprite(spriteName) : null;
+		UISprite sprite = AddWidget<UISprite>(go);
+		sprite.type = (sp == null || sp.inner == sp.outer) ? UISprite.Type.Simple : UISprite.Type.Sliced;
+		sprite.atlas = atlas;
+		sprite.spriteName = spriteName;
+		return sprite;
 	}
 
-	public static T FindInParents<T>(GameObject go) where T : Component
+	/// <summary>
+	/// Get the rootmost object of the specified game object.
+	/// </summary>
+
+	static public GameObject GetRoot (GameObject go)
 	{
-		if (go == null)
+		Transform t = go.transform;
+
+		for (; ; )
 		{
-			return (T)null;
+			Transform parent = t.parent;
+			if (parent == null) break;
+			t = parent;
 		}
-		object component = go.GetComponent<T>();
-		if (component == null)
+		return t.gameObject;
+	}
+
+	/// <summary>
+	/// Finds the specified component on the game object or one of its parents.
+	/// </summary>
+
+	static public T FindInParents<T> (GameObject go) where T : Component
+	{
+		if (go == null) return null;
+		object comp = go.GetComponent<T>();
+
+		if (comp == null)
 		{
-			Transform parent = go.transform.parent;
-			while (parent != null && component == null)
+			Transform t = go.transform.parent;
+
+			while (t != null && comp == null)
 			{
-				component = parent.gameObject.GetComponent<T>();
-				parent = parent.parent;
+				comp = t.gameObject.GetComponent<T>();
+				t = t.parent;
 			}
 		}
-		return (T)component;
+		return (T)comp;
 	}
 
-	public static void Destroy(UnityEngine.Object obj)
+	/// <summary>
+	/// Destroy the specified object, immediately if in edit mode.
+	/// </summary>
+
+	static public void Destroy (UnityEngine.Object obj)
 	{
 		if (obj != null)
 		{
 			if (Application.isPlaying)
 			{
+				if (obj is GameObject)
+				{
+					GameObject go = obj as GameObject;
+					go.transform.parent = null;
+				}
+
 				UnityEngine.Object.Destroy(obj);
 			}
-			else
-			{
-				UnityEngine.Object.DestroyImmediate(obj);
-			}
+			else UnityEngine.Object.DestroyImmediate(obj);
 		}
 	}
 
-	public static void DestroyImmediate(UnityEngine.Object obj)
+	/// <summary>
+	/// Destroy the specified object immediately, unless not in the editor, in which case the regular Destroy is used instead.
+	/// </summary>
+
+	static public void DestroyImmediate (UnityEngine.Object obj)
 	{
 		if (obj != null)
 		{
-			if (Application.isEditor)
-			{
-				UnityEngine.Object.DestroyImmediate(obj);
-			}
-			else
-			{
-				UnityEngine.Object.Destroy(obj);
-			}
+			if (Application.isEditor) UnityEngine.Object.DestroyImmediate(obj);
+			else UnityEngine.Object.Destroy(obj);
 		}
 	}
 
-	public static void Broadcast(string funcName)
+	/// <summary>
+	/// Call the specified function on all objects in the scene.
+	/// </summary>
+
+	static public void Broadcast (string funcName)
 	{
-		GameObject[] array = UnityEngine.Object.FindObjectsOfType(typeof(GameObject)) as GameObject[];
-		int i = 0;
-		for (int num = array.Length; i < num; i++)
-		{
-			array[i].SendMessage(funcName, SendMessageOptions.DontRequireReceiver);
-		}
+		GameObject[] gos = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[];
+		for (int i = 0, imax = gos.Length; i < imax; ++i) gos[i].SendMessage(funcName, SendMessageOptions.DontRequireReceiver);
 	}
 
-	public static void Broadcast(string funcName, object param)
+	/// <summary>
+	/// Call the specified function on all objects in the scene.
+	/// </summary>
+
+	static public void Broadcast (string funcName, object param)
 	{
-		GameObject[] array = UnityEngine.Object.FindObjectsOfType(typeof(GameObject)) as GameObject[];
-		int i = 0;
-		for (int num = array.Length; i < num; i++)
-		{
-			array[i].SendMessage(funcName, param, SendMessageOptions.DontRequireReceiver);
-		}
+		GameObject[] gos = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[];
+		for (int i = 0, imax = gos.Length; i < imax; ++i) gos[i].SendMessage(funcName, param, SendMessageOptions.DontRequireReceiver);
 	}
 
-	public static bool IsChild(Transform parent, Transform child)
+	/// <summary>
+	/// Determines whether the 'parent' contains a 'child' in its hierarchy.
+	/// </summary>
+
+	static public bool IsChild (Transform parent, Transform child)
 	{
-		if (parent == null || child == null)
-		{
-			return false;
-		}
+		if (parent == null || child == null) return false;
+
 		while (child != null)
 		{
-			if (child == parent)
-			{
-				return true;
-			}
+			if (child == parent) return true;
 			child = child.parent;
 		}
 		return false;
 	}
 
-	private static void Activate(Transform t)
+	/// <summary>
+	/// Activate the specified object and all of its children.
+	/// </summary>
+
+	static void Activate (Transform t)
 	{
 		SetActiveSelf(t.gameObject, true);
-		int i = 0;
-		for (int childCount = t.GetChildCount(); i < childCount; i++)
+
+		// Prior to Unity 4, active state was not nested. It was possible to have an enabled child of a disabled object.
+		// Unity 4 onwards made it so that the state is nested, and a disabled parent results in a disabled child.
+#if UNITY_3_5
+		for (int i = 0, imax = t.GetChildCount(); i < imax; ++i)
 		{
 			Transform child = t.GetChild(i);
 			Activate(child);
 		}
+#else
+		// If there is even a single enabled child, then we're using a Unity 4.0-based nested active state scheme.
+		for (int i = 0, imax = t.childCount; i < imax; ++i)
+		{
+			Transform child = t.GetChild(i);
+			if (child.gameObject.activeSelf) return;
+		}
+
+		// If this point is reached, then all the children are disabled, so we must be using a Unity 3.5-based active state scheme.
+		for (int i = 0, imax = t.childCount; i < imax; ++i)
+		{
+			Transform child = t.GetChild(i);
+			Activate(child);
+		}
+#endif
 	}
 
-	private static void Deactivate(Transform t)
+	/// <summary>
+	/// Deactivate the specified object and all of its children.
+	/// </summary>
+
+	static void Deactivate (Transform t)
 	{
-		int i = 0;
-		for (int childCount = t.GetChildCount(); i < childCount; i++)
+#if UNITY_3_5
+		for (int i = 0, imax = t.GetChildCount(); i < imax; ++i)
 		{
 			Transform child = t.GetChild(i);
 			Deactivate(child);
 		}
+#endif
 		SetActiveSelf(t.gameObject, false);
 	}
 
-	public static void SetActive(GameObject go, bool state)
+	/// <summary>
+	/// SetActiveRecursively enables children before parents. This is a problem when a widget gets re-enabled
+	/// and it tries to find a panel on its parent.
+	/// </summary>
+
+	static public void SetActive (GameObject go, bool state)
 	{
 		if (state)
 		{
@@ -452,29 +617,80 @@ public static class NGUITools
 		}
 	}
 
-	public static bool GetActive(GameObject go)
+	/// <summary>
+	/// Activate or deactivate children of the specified game object without changing the active state of the object itself.
+	/// </summary>
+
+	static public void SetActiveChildren (GameObject go, bool state)
 	{
-		return go.activeSelf;
+		Transform t = go.transform;
+
+		if (state)
+		{
+			for (int i = 0, imax = t.childCount; i < imax; ++i)
+			{
+				Transform child = t.GetChild(i);
+				Activate(child);
+			}
+		}
+		else
+		{
+			for (int i = 0, imax = t.childCount; i < imax; ++i)
+			{
+				Transform child = t.GetChild(i);
+				Deactivate(child);
+			}
+		}
 	}
 
-	public static void SetActiveSelf(GameObject go, bool state)
+	/// <summary>
+	/// Unity4 has changed GameObject.active to GameObject.activeself.
+	/// </summary>
+
+	static public bool GetActive(GameObject go)
 	{
+#if UNITY_3_5
+		return go && go.active;
+#else
+		return go && go.activeInHierarchy;
+#endif
+	}
+
+	/// <summary>
+	/// Unity4 has changed GameObject.active to GameObject.SetActive.
+	/// </summary>
+
+	static public void SetActiveSelf(GameObject go, bool state)
+	{
+#if UNITY_3_5
+		go.active = state;
+#else
 		go.SetActive(state);
+#endif
 	}
 
-	public static void SetLayer(GameObject go, int layer)
+	/// <summary>
+	/// Recursively set the game object's layer.
+	/// </summary>
+
+	static public void SetLayer (GameObject go, int layer)
 	{
 		go.layer = layer;
-		Transform transform = go.transform;
-		int i = 0;
-		for (int childCount = transform.GetChildCount(); i < childCount; i++)
+
+		Transform t = go.transform;
+		
+		for (int i = 0, imax = t.childCount; i < imax; ++i)
 		{
-			Transform child = transform.GetChild(i);
+			Transform child = t.GetChild(i);
 			SetLayer(child.gameObject, layer);
 		}
 	}
 
-	public static Vector3 Round(Vector3 v)
+	/// <summary>
+	/// Helper function used to make the vector use integer numbers.
+	/// </summary>
+
+	static public Vector3 Round (Vector3 v)
 	{
 		v.x = Mathf.Round(v.x);
 		v.y = Mathf.Round(v.y);
@@ -482,20 +698,157 @@ public static class NGUITools
 		return v;
 	}
 
-	public static void MakePixelPerfect(Transform t)
+	/// <summary>
+	/// Make the specified selection pixel-perfect.
+	/// </summary>
+
+	static public void MakePixelPerfect (Transform t)
 	{
-		UIWidget component = t.GetComponent<UIWidget>();
-		if (component != null)
+		UIWidget w = t.GetComponent<UIWidget>();
+
+		if (w != null)
 		{
-			component.MakePixelPerfect();
-			return;
+			w.MakePixelPerfect();
 		}
-		t.localPosition = Round(t.localPosition);
-		t.localScale = Round(t.localScale);
-		int i = 0;
-		for (int childCount = t.childCount; i < childCount; i++)
+		else
 		{
-			MakePixelPerfect(t.GetChild(i));
+			t.localPosition = Round(t.localPosition);
+			t.localScale = Round(t.localScale);
+
+			for (int i = 0, imax = t.childCount; i < imax; ++i)
+			{
+				MakePixelPerfect(t.GetChild(i));
+			}
 		}
 	}
+
+	/// <summary>
+	/// Save the specified binary data into the specified file.
+	/// </summary>
+
+	static public bool Save (string fileName, byte[] bytes)
+	{
+#if UNITY_WEBPLAYER || UNITY_FLASH || UNITY_METRO
+		return false;
+#else
+		if (!NGUITools.fileAccess) return false;
+
+		string path = Application.persistentDataPath + "/" + fileName;
+
+		if (bytes == null)
+		{
+			if (File.Exists(path)) File.Delete(path);
+			return true;
+		}
+
+		FileStream file = null;
+
+		try
+		{
+			file = File.Create(path);
+		}
+		catch (System.Exception ex)
+		{
+			NGUIDebug.Log(ex.Message);
+			return false;
+		}
+
+		file.Write(bytes, 0, bytes.Length);
+		file.Close();
+		return true;
+#endif
+	}
+
+	/// <summary>
+	/// Load all binary data from the specified file.
+	/// </summary>
+
+	static public byte[] Load (string fileName)
+	{
+#if UNITY_WEBPLAYER || UNITY_FLASH || UNITY_METRO
+		return null;
+#else
+		if (!NGUITools.fileAccess) return null;
+
+		string path = Application.persistentDataPath + "/" + fileName;
+
+		if (File.Exists(path))
+		{
+			return File.ReadAllBytes(path);
+		}
+		return null;
+#endif
+	}
+
+	/// <summary>
+	/// Pre-multiply shaders result in a black outline if this operation is done in the shader. It's better to do it outside.
+	/// </summary>
+
+	static public Color ApplyPMA (Color c)
+	{
+		if (c.a != 1f)
+		{
+			c.r *= c.a;
+			c.g *= c.a;
+			c.b *= c.a;
+		}
+		return c;
+	}
+
+	/// <summary>
+	/// Inform all widgets underneath the specified object that the parent has changed.
+	/// </summary>
+
+	static public void MarkParentAsChanged (GameObject go)
+	{
+		UIWidget[] widgets = go.GetComponentsInChildren<UIWidget>();
+		for (int i = 0, imax = widgets.Length; i < imax; ++i)
+			widgets[i].ParentHasChanged();
+	}
+
+	/// <summary>
+	/// Clipboard access via reflection.
+	/// http://answers.unity3d.com/questions/266244/how-can-i-add-copypaste-clipboard-support-to-my-ga.html
+	/// </summary>
+
+#if UNITY_WEBPLAYER || UNITY_FLASH || UNITY_METRO
+	/// <summary>
+	/// Access to the clipboard is not supported on this platform.
+	/// </summary>
+
+	public static string clipboard
+	{
+		get { return null; }
+		set { }
+	}
+#else
+	static PropertyInfo mSystemCopyBuffer = null;
+	static PropertyInfo GetSystemCopyBufferProperty ()
+	{
+		if (mSystemCopyBuffer == null)
+		{
+			Type gui = typeof(GUIUtility);
+			mSystemCopyBuffer = gui.GetProperty("systemCopyBuffer", BindingFlags.Static | BindingFlags.NonPublic);
+		}
+		return mSystemCopyBuffer;
+	}
+
+	/// <summary>
+	/// Access to the clipboard via a hacky method of accessing Unity's internals. Won't work in the web player.
+	/// </summary>
+
+	public static string clipboard
+	{
+		get
+		{
+			PropertyInfo copyBuffer = GetSystemCopyBufferProperty();
+			return (copyBuffer != null) ? (string)copyBuffer.GetValue(null, null) : null;
+		}
+		set
+		{
+			PropertyInfo copyBuffer = GetSystemCopyBufferProperty();
+			if (copyBuffer != null) copyBuffer.SetValue(null, value, null);
+		}
+	}
+#endif
 }
