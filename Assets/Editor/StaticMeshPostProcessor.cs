@@ -25,8 +25,11 @@ public class StaticMeshPostProcessor : EditorWindow
 
         if (GUILayout.Button("Unmark"))
         {
-            foreach (MeshFilter filter in filters) filter.gameObject.isStatic = false;
-            foreach (ParticleRenderer particleRenderer in particleRenderers) particleRenderer.gameObject.isStatic = false;
+            foreach (MeshFilter filter in filters) 
+                if (filter != null) filter.gameObject.isStatic = false;
+
+            foreach (ParticleRenderer particleRenderer in particleRenderers)
+                if (particleRenderer != null) particleRenderer.gameObject.isStatic = false;
 
             Search();
         }
