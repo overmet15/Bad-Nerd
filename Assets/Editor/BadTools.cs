@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
+using System.IO;
 
 public class BadTools : EditorWindow
 {
@@ -19,6 +21,11 @@ public class BadTools : EditorWindow
         if (!Application.isPlaying)
         {
             GUILayout.Label("Run the game.", EditorStyles.helpBox);
+            if (GUILayout.Button("Open Main Menu"))
+            {
+                EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
+                EditorSceneManager.OpenScene(Path.Combine(Application.dataPath, "custom/scene/MainMenu.unity"));
+            }
             return;
         }
 
