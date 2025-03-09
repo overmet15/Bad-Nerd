@@ -10,6 +10,8 @@ public class StaticMeshPostProcessor : EditorWindow
     static List<MeshFilter> filters = new List<MeshFilter>();
     static List<ParticleRenderer> particleRenderers = new List<ParticleRenderer>();
 
+    static bool wasSet;
+
     [MenuItem("BadTools/Static Mesh Post Processor")]
     static void GetMe()
     {
@@ -19,6 +21,13 @@ public class StaticMeshPostProcessor : EditorWindow
 
     void OnGUI()
     {
+        if (!wasSet)
+        {
+            ClearAll();
+            EditorSceneManager.sceneLoaded += (scene, mode) => { Search(); };
+            wasSet = true;
+        }
+
         if (GUILayout.Button("Search")) Search();
 
         GUILayout.Label("Static Mesh Filters Found: " + filters.Count);
@@ -39,6 +48,8 @@ public class StaticMeshPostProcessor : EditorWindow
 
     static void Search()
     {
+        ClearAll();
+
         foreach (Renderer meshRenderer in FindObjectsOfType<Renderer>())
         {
             if (!meshRenderer.gameObject.isStatic) continue;
@@ -52,5 +63,11 @@ public class StaticMeshPostProcessor : EditorWindow
         {
             if (particleRenderer.gameObject.isStatic) particleRenderers.Add(particleRenderer);
         }
+    }
+
+    static void ClearAll()
+    {
+        filters.Clear();
+        particleRenderers.Clear();
     }
 }
