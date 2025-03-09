@@ -12,6 +12,7 @@ public class StaticMeshPostProcessor : EditorWindow
     [MenuItem("BadTools/Static Mesh Post Processor")]
     static void GetMe()
     {
+        Search();
         GetWindow<StaticMeshPostProcessor>("SMPP");
     }
 
