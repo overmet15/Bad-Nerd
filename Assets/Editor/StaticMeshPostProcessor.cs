@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class StaticMeshPostProcessor : EditorWindow
@@ -31,6 +32,7 @@ public class StaticMeshPostProcessor : EditorWindow
             foreach (ParticleRenderer particleRenderer in particleRenderers)
                 if (particleRenderer != null) particleRenderer.gameObject.isStatic = false;
 
+            EditorSceneManager.MarkAllScenesDirty();
             Search();
         }
     }
@@ -43,7 +45,7 @@ public class StaticMeshPostProcessor : EditorWindow
 
             MeshFilter m = meshRenderer.GetComponent<MeshFilter>();
 
-            if (m != null && m.sharedMesh.name.StartsWith("Combined Mesh")) filters.Add(m);
+            if (m != null && !m.sharedMesh.name.StartsWith("Combined Mesh")) filters.Add(m);
         }
 
         foreach (ParticleRenderer particleRenderer in FindObjectsOfType<ParticleRenderer>())
